@@ -1,5 +1,13 @@
 package org.ucm.tp1.p1.logic;
 
-public class Game {
+import org.ucm.tp1.p1.objetos.GameObjectBoard;
 
+public class Game {
+	private GameObjectBoard board;
+	
+	
+	
+	
+	
+	
 }
