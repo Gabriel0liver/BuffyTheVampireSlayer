@@ -1,3 +1,0 @@
-# BuffyTheVampireSlayer
-
-hola
