@@ -1,3 +1,4 @@
+package org.ucm.tp1.p1.main;
 
 
 
@@ -7,7 +8,7 @@ import org.ucm.tp1.p1.logic.Level;
 import org.ucm.tp1.p1.control.Controller;
 import org.ucm.tp1.p1.logic.Game;
 
-public class Vampiros {
+public class BuffyTheVampireSlayer {
 		public static final String version = "1.0";
 		public static final String usageMsg = "Usage: Vampire slayer <level> [seed]";
 		public static final String welcomeMsg = String.format("Buffy the Vampire Slayer " + version + "%n");

@@ -1,4 +1,9 @@
-package org.ucm.tp1.p1.objetos;
+package org.ucm.tp1.p1.utils;
+
+import org.ucm.tp1.p1.objetos.Slayer;
+import org.ucm.tp1.p1.objetos.SlayerList;
+import org.ucm.tp1.p1.objetos.Vampire;
+import org.ucm.tp1.p1.objetos.VampireList;
 
 public class GameObjectBoard {
 	
