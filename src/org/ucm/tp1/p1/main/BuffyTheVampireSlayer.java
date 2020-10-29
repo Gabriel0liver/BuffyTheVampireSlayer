@@ -35,7 +35,7 @@ public class BuffyTheVampireSlayer {
 					System.out.print(welcomeMsg);
 					System.out.println(seedInfoMsg + seed);
 					
-					Controller controller = new Controller(new Game(seed, level), new Scanner(System.in));
+					Controller controller = new Controller(new Scanner(System.in),level,seed);
 					controller.run();
 				}
 				catch (NumberFormatException nfe) {

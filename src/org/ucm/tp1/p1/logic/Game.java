@@ -9,7 +9,7 @@ public class Game {
 	
 	public Game(Long seed, Level level) {
 		this.seed = seed;
-		this.level = level; 
+		this.level = level;
 	}
 	
 	
