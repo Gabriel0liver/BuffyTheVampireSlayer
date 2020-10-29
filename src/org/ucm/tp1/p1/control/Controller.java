@@ -20,26 +20,39 @@ public class Controller {
 	public static final String invalidPositionMsg = String.format("Invalid position");
 
     private Game game;
-    private Scanner scanner;
+    private Scanner in;
+    
+    private boolean running;
+    private String[] words;
     
     public Controller(Game game, Scanner scanner) {
 	    this.game = game;
-	    this.scanner = scanner;
+	    this.in = scanner;
     }
     
     public void  printGame() {
-   	 System.out.println(game);
-   }
+   	 	System.out.println(game);
+    }
     
     public void run() {
-		this.
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+    	this.running = true;
+    	while(this.running) {
+    		String s = in.nextLine();
+    		s = s.trim();
+    		this.words = s.split(" +");
+    		if(this.words[0].equals("") || this.words[0].equals("n") || this.words[0].equals("none")) {
+    			
+    		}else if(this.words[0].equals("h") || this.words[0].equals("help")) {
+    			
+    		}else if(this.words[0].equals("a") || this.words[0].equals("add")) {
+    			
+    		}else if(this.words[0].equals("r") || this.words[0].equals("reset")) {
+    			
+    		}else if(this.words[0].equals("e") || this.words[0].equals("exit")) {
+    			this.running = false;
+    		}
+    	}
     }
+    
 
 }

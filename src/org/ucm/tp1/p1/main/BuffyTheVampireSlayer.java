@@ -2,7 +2,6 @@ package org.ucm.tp1.p1.main;
 
 
 
-
 import java.util.Scanner;
 import org.ucm.tp1.p1.logic.Level;
 import org.ucm.tp1.p1.control.Controller;
