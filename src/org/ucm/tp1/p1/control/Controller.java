@@ -2,6 +2,7 @@ package org.ucm.tp1.p1.control;
 
 import java.util.Scanner;
 import org.ucm.tp1.p1.logic.Game;
+import org.ucm.tp1.p1.logic.Level;
 
 public class Controller {
 
@@ -23,10 +24,9 @@ public class Controller {
     private Scanner in;
     
     private boolean running;
-    private String[] words;
     
     public Controller(Game game, Scanner scanner) {
-	    this.game = game;
+    	this.game = game;
 	    this.in = scanner;
     }
     
@@ -39,16 +39,38 @@ public class Controller {
     	while(this.running) {// aqui empieza el bucle de la partida.
     		String s = in.nextLine();
     		s = s.trim();
-    		this.words = s.split(" +");
-    		if(this.words[0].equals("") || this.words[0].equals("n") || this.words[0].equals("none")) {
+    		String [] words = s.split(" +");
+    		if(words[0].equals("") || words[0].equals("n") || words[0].equals("none")) {
     			
-    		}else if(this.words[0].equals("h") || this.words[0].equals("help")) {
-    			
-    		}else if(this.words[0].equals("a") || this.words[0].equals("add")) {
-    			
-    		}else if(this.words[0].equals("r") || this.words[0].equals("reset")) {
-    			
-    		}else if(this.words[0].equals("e") || this.words[0].equals("exit")) {
+    		}
+    		else if(words[0].equals("h") || words[0].equals("help")) {
+    			System.out.println("Available commands:");
+    			System.out.println("[a]dd <x> <y>: add a slayer in position x, y");
+    			System.out.println("[h]elp: show this help");
+    			System.out.println("[r]eset: reset game");
+    			System.out.println("[e]xit: exit game");
+    			System.out.println("[n]one | []: update");
+    		}
+    		else if(words[0].equals("a") || words[0].equals("add")) {
+    			int x;
+    			int y;
+    			try {
+    				x = Integer.parseInt(words[1]);
+    				y = Integer.parseInt(words[2]);
+    			}
+    			catch(Exception exception) {
+    				System.out.println("[ERROR]: Invalidposition");
+    				break;
+    			}
+    			if(this.game.addSlayer(x,y)) {
+    				
+    			}
+    		}
+    		else if(words[0].equals("r") || words[0].equals("reset")) {
+    			this.game = new Game(this.game.seed,this.game.level);
+    		}
+    		else if(words[0].equals("e") || words[0].equals("exit")) {
+    			System.out.println("Game Over");
     			this.running = false;
     		}
     	}
