@@ -11,9 +11,9 @@ public class GameObjectBoard {
 	private VampireList vampireList;
 	private SlayerList slayerList;
 	
-	public GameObjectBoard(VampireList lista1, SlayerList lista2) {	
-		this.vampireList = lista1;
-		this.slayerList = lista2;
+	public GameObjectBoard() {	
+		this.vampireList = new VampireList;
+		this.slayerList = new SlayerList;
 	}
 	
 public void addV(Vampire vam) {
