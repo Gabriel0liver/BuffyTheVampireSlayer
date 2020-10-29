@@ -34,9 +34,9 @@ public class Controller {
    	 	System.out.println(game);
     }
     
-    public void run() {
+    public void run() {	
     	this.running = true;
-    	while(this.running) {
+    	while(this.running) {// aqui empieza el bucle de la partida.
     		String s = in.nextLine();
     		s = s.trim();
     		this.words = s.split(" +");
