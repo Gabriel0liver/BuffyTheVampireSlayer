@@ -12,14 +12,14 @@ public class GameObjectBoard {
 	private SlayerList slayerList;
 	
 	public GameObjectBoard() {	
-		this.vampireList = new VampireList;
-		this.slayerList = new SlayerList;
+		this.vampireList = new VampireList();
+		this.slayerList = new SlayerList();
 	}
 	
-public void addV(Vampire vam) {
+	public void addV(Vampire vam) {
 		
 		
-}
+	}
 	
 	public void addS (Slayer sla) {
 		

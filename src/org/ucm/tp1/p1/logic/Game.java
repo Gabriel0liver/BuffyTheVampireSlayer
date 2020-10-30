@@ -24,14 +24,16 @@ public class Game {
 		this.dim_y = this.level.dimensiony();
 		this.printer = new GamePrinter(this, this.dim_y, this.dim_x);
 		this.rand = new Random(seed);
-		this.player = new Player();
+		this.player = new Player(this.rand);
 	}
 	
 	public boolean addSlayer(int x, int y) {
+		
 		return true;
 	}
 	
 	public void update() {
+		this.player.addCoins();
 		
 	}
 }

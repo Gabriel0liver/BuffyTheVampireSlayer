@@ -37,11 +37,12 @@ public class Controller {
     public void run() {	
     	this.running = true;
     	while(this.running) {// aqui empieza el bucle de la partida.
+    		//hacer draw
     		String s = in.nextLine();
     		s = s.trim();
     		String [] words = s.split(" +");
     		if(words[0].equals("") || words[0].equals("n") || words[0].equals("none")) {
-    			
+    			this.game.update();
     		}
     		else if(words[0].equals("h") || words[0].equals("help")) {
     			System.out.println("Available commands:");
@@ -63,7 +64,7 @@ public class Controller {
     				break;
     			}
     			if(this.game.addSlayer(x,y)) {
-    				
+    				this.game.update();
     			}
     		}
     		else if(words[0].equals("r") || words[0].equals("reset")) {
