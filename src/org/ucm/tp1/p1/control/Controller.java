@@ -30,14 +30,10 @@ public class Controller {
 	    this.in = scanner;
     }
     
-    public void  printGame() {
-   	 	System.out.println(game);
-    }
-    
     public void run() {	
     	this.running = true;
     	while(this.running) {// aqui empieza el bucle de la partida.
-    		//hacer draw
+    		this.game.draw();
     		String s = in.nextLine();
     		s = s.trim();
     		String [] words = s.split(" +");

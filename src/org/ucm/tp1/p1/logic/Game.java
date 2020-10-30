@@ -7,7 +7,7 @@ import org.ucm.tp1.p1.utils.GameObjectBoard;
 import org.ucm.tp1.p1.view.GamePrinter;
 
 public class Game {
-	private GameObjectBoard board;
+	public GameObjectBoard board;
 	private int dim_x;
 	private int dim_y;
 	private int contadorCiclos;
@@ -26,6 +26,7 @@ public class Game {
 		this.rand = new Random(seed);
 		this.player = new Player(this.rand);
 		this.board = new GameObjectBoard(this);
+		this.contadorCiclos = 0;
 	}
 	
 	public boolean addSlayer(int x, int y) {
@@ -33,9 +34,19 @@ public class Game {
 		return true;
 	}
 	
+	public void addVampire() {
+		
+	}
+	
 	public void update() {
 		this.player.addCoins();
 		this.board.update();
+		this.contadorCiclos += 1;
+		this.addVampire();
+	}
+	
+	public void draw() {
+		this.printer.toString();
 	}
 	
 	
