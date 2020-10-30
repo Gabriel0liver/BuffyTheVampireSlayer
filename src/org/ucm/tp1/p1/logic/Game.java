@@ -24,7 +24,8 @@ public class Game {
 		this.dim_y = this.level.dimensiony();
 		this.printer = new GamePrinter(this, this.dim_y, this.dim_x);
 		this.rand = new Random(seed);
-		this.player = new Player(this.rand);
+		this.player = new Player();
+		this.board = new GameObjectBoard(this);
 	}
 	
 	public boolean addSlayer(int x, int y) {
@@ -36,4 +37,6 @@ public class Game {
 		this.player.addCoins();
 		
 	}
+	
+	
 }

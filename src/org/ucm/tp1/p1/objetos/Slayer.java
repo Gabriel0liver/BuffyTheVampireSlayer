@@ -9,7 +9,7 @@ public class Slayer {
 	private Game game;
 	private boolean alive;
 	public static final int COST= 50;
-	public static final int HARM = 1;
+	public static final int HARM = 1; //daño
 	
 	
 	
@@ -20,9 +20,9 @@ public class Slayer {
 		this.alive = true;
 		
 	}
-	public boolean isAlive( int i) {
+	public boolean isAlive() {
 		
-		if (i <= 0) {
+		if (this.life <= 0) {
 			this.alive = false;
 		}
 		
@@ -30,26 +30,44 @@ public class Slayer {
 	}
 
 	
-	public void decreaseLife() {
-		this.life--;
+	public void decreaseLife(int harm) {
+		this.life= this.life -harm;
 		
-		isAlive(this.life);
+		isAlive();
 	}
-	public void attack() {
-		int i = 0;
+	public boolean attack(VampireList vampireList, int i) { // el game tiene que ejecutar el ataque
+		//busca al vampiro que has disparado y devuelve que vampiro fué disparado, 
+		
+		
+		 i = 0; //ubicación
 		int shot = this.x;
 		boolean success = false;
-		while(shot < this.game.level.dimx  || success== false) { // longitud de x, esta en this.game.
-		while( i >this.game.board.vampireList.cont || success == false) {
-			if(this.game.board.vampireList.vampiros[i].y.equals(this.y) && this.game.board.vampireList.vampiros[i].x.equals(shot)) {
-				success= true;
-			}
+		while(shot < this.game.level.dimensionx()  || success== false) { // longitud de x, esta en this.game.
 			
-			i++;
+			Vampire localVampire = vampireList.getV(i);
+			//DUDA : si manipulo el local vampire entonces también manipulo vampiros[i]?
+			//consideraré que se puede ya que "insertar argumento punteros"
+			
+			while( i<vampireList.getContador() || success == false) {
+				
+				int xLocal =localVampire.getX();
+				int yLocal = localVampire.getY();
+				
+				if(yLocal == this.y && xLocal==shot) {
+					success= true;
+					localVampire.decreaseLife(this.HARM);
+				}
+			
+				i++;
+			}
+			shot++;
 		}
-		shot++;
-		}
+		i--;
+		return success;
 	}
+	
+	
+	
 	public void toString{
 		
 				

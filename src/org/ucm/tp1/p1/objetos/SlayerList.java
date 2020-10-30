@@ -1,10 +1,12 @@
 package org.ucm.tp1.p1.objetos;
 
+import org.ucm.tp1.p1.logic.Game;
+
 public class SlayerList {
 	private int MAX= 1000;
 	private int cont = 0;
 
-	private Slayer [] slayers = new Slayer[MAX];
+	private Slayer [] slayers;
 	
 		
 	
@@ -12,10 +14,20 @@ public class SlayerList {
 		this.slayers = new Slayer[MAX];
 	}
 	
+	public void addS(Game game, int x, int y) {
+		this.slayers[this.cont] = new Slayer(game,x,y);
+		
+		this.cont++;
+	}
+	
+public int contador() {
+		
+		
+		return this.cont;
+	}
 	
 	
-	
-	
-	
-	
+	public Slayer getS(int x) {
+		return this.slayers[x];
+	}
 }
