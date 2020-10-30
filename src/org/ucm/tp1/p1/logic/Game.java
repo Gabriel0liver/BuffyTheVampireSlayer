@@ -42,9 +42,16 @@ public class Game {
 		this.player.addCoins();
 		this.board.update();
 		this.contadorCiclos += 1;
-		this.addVampire();
+		this.addVampire(); // esto seria mejor si lo pusiese dentro del board.update... Creo.
 	}
 	
+	
+	public void attackV(int x, int y) {
+		
+	}
+	public void attackS(int x, int y) {
+		this.board.attackS(x,y);
+	}
 	public void draw() {
 		this.printer.toString();
 	}

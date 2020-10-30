@@ -1,4 +1,6 @@
 package org.ucm.tp1.p1.objetos;
+
+
 import org.ucm.tp1.p1.logic.Game;
 
 public class VampireList {
@@ -6,6 +8,7 @@ public class VampireList {
 	private int cont = 0;
 
 	private Vampire [] vampiros;
+	
 		
 	
 	public VampireList() {	// inicializador de la lista vampire
@@ -18,6 +21,31 @@ public class VampireList {
 		
 		this.cont++;
 	}
+	
+	public void limpiar(int ubicacion) {
+		int i=ubicacion;
+		while(i< this.cont) {
+			vampiros[i]=vampiros[i+1];
+			i++;
+		}
+		this.cont--;
+	}
+	
+	private boolean encontrarVampiroDisparado(int x,int y) {
+		boolean  encontrado=false;
+		int i=0;
+		while(i<this.cont || !encontrado) {
+			Vampire vampiroLocal = this.getV(i);
+			if( vampiroLocal.getXV() == x && vampiroLocal.getYV() == y) {
+				
+			}
+			i++;
+		}
+		
+		return encontrado;
+	}
+	
+	
 	
 	public int getContador() {
 		return this.cont;

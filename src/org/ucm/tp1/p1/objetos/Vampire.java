@@ -8,7 +8,7 @@ public class Vampire {
 	private int y;
 	private int life= 5;
 	private Game game;
-	public static final int HARM=1; //da�o
+	public static final int HARM=1; //dagno
 	public static final int SPEED = 2; // avanza 1 casilla cada 2 ciclos;
 	private Random rand;
 	boolean alive;
@@ -35,32 +35,31 @@ public boolean isAlive() {
 	}
 	
 	
-	public void move(SlayerList lista) {
-		// recuerda que el vampiro pasa por encima de los cazadores muertos
-		int i=0;
-		boolean encontrado=false;
-		
-		while(!encontrado && i<lista.getContador()) {
-			Slayer slayerLocal = lista.getS(i);
-			if(slayerLocal.getXS() ==(this.x-1) && slayerLocal.getYS() == this.y) {
-				encontrado = true;
-				attack(slayerLocal);
+	public void move() {
+		if(this.x != 0) {
+			nextStep();
+			if(this.SPEED == 0) {
+				this.x--;
+				nextStep();
 			}
-			
 		}
-		if(encontrado == false) {
-			this.x--;
+		else{
+			//game over
 		}
-		
-		
 		
 		
 	}
-	public void attack(Slayer slayer) {// el game tiene que ejecutar el ataque
-		
-		
-		
-		
+	public void nextStep() {
+		if(this.SPEED != 0) {
+			this.SPEED--;
+		}
+		else
+			this.SPEED = 2;
+	}
+	
+	
+	public void attack() {// el game tiene que ejecutar el ataque
+		this.game.attackV();
 	}
 	public void toString{
 		

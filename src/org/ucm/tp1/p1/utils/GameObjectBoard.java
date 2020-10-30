@@ -32,19 +32,77 @@ public class GameObjectBoard {
 	
 	public void update() {
 		
-		mover();
+		move();
+		attack();
+		limpiar();
+		
+		
 		
 		
 	}
-	
-	private void mover() {
+	private void attack() {
+		
+		for(int i = 0; i<this.slayerList.getContador();i++) {
+			Slayer slayerLocal = this.slayerList.getS(i);
+			slayerLocal.attack();
+		}
+		// for ( tipo <nombre variable> : lista/array de tipo)
+		for (Vampire v : this.vampireList) {
+			v.attack();
+		}
 		for(int i=0;i<this.vampireList.getContador();i++){
 			Vampire vampiroLocal = this.vampireList.getV(i);
-			if(vampiroLocal.isAlive()) {
-				vampiroLocal.move(this.slayerList);
-				
-			}			
+			vampiroLocal.attack();			
 		}	
+	}
+
+	private void move() {
+
+		boolean puede=true;
+		int j=0;
+		for(int i=0;i<this.vampireList.getContador();i++){
+			Vampire vampiroLocal = this.vampireList.getV(i);
+			while( j<this.slayerList.getContador() && !puede) {
+				Slayer slayerLocal = this.slayerList.getS(j);
+				if(slayerLocal.getXS()== (vampiroLocal.getXV()-1) && slayerLocal.getYS() == vampiroLocal.getYV()) {
+					puede = false;
+				}
+				j++;
+			}
+			if(puede) {
+				vampiroLocal.move();
+			}
+				
+			puede = true;
+		}	
+	}
+
+	private void limpiar() {
+		for(int i = 0; i<this.slayerList.getContador();i++) {
+			Slayer slayerLocal = this.slayerList.getS(i);
+			if(!slayerLocal.isAlive()) {
+				this.slayerList.limpiar(i);
+			}
+		}
+		
+		for(int i=0;i<this.vampireList.getContador();i++){
+			Vampire vampiroLocal = this.vampireList.getV(i);
+			if(!vampiroLocal.isAlive()) {
+				this.vampireList.limpiar(i);
+			}
+		}	
+	}
+	public boolean attackS(int x, int y) {//el slayer pega un tiro
+		boolean encontrado=false;
+		ubicacion = x+1;
+		Vampire vampiroDisparado;
+		
+		return encontrado
+	}
+	
+	}
+	public void attackV(int x, int y) {
+		
 	}
 	
 	public Vampire getV(int x) {

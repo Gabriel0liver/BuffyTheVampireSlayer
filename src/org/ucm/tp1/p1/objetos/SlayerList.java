@@ -19,13 +19,21 @@ public class SlayerList {
 		
 		this.cont++;
 	}
-	
-public int getContador() {
-		
-		
-		return this.cont;
+
+	public void limpiar(int ubicacion) {
+		int i=ubicacion;
+		while(i< this.cont) {
+			slayers[i]=slayers[i+1];
+			i++;
+		}
+		this.cont--;
 	}
 	
+	
+	
+public int getContador() {	
+		return this.cont;
+	}
 	
 	public Slayer getS(int x) {
 		return this.slayers[x];
