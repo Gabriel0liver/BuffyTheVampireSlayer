@@ -24,7 +24,7 @@ public class Game {
 		this.dim_y = this.level.dimensiony();
 		this.printer = new GamePrinter(this, this.dim_y, this.dim_x);
 		this.rand = new Random(seed);
-		this.player = new Player();
+		this.player = new Player(this.rand);
 		this.board = new GameObjectBoard(this);
 	}
 	
@@ -35,7 +35,7 @@ public class Game {
 	
 	public void update() {
 		this.player.addCoins();
-		
+		this.board.update();
 	}
 	
 	

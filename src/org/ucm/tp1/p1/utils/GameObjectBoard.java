@@ -19,23 +19,25 @@ public class GameObjectBoard {
 		this.game = game;
 	}
 	
-public void addV() {
-		this.vampireList.addV(this.game,);
+	public void addV(int x, int y) {
+			this.vampireList.addV(this.game, x, y);
+			
+		}
 		
+	public void addS (int x, int y) {
+		this.slayerList.addS(this.game,x, y);
 	}
 	
-public void addS (int x, int y) {
-	this.slayerList.addS(this.game,x, y);
-}
-
-public Vampire getV(int x) {
-	return this.vampireList.getV(x);
-}
-public Slayer getS(int x) {
-	return this.slayerList.getS(x);
-}
+	public Vampire getV(int x) {
+		return this.vampireList.getV(x);
+	}
+	public Slayer getS(int x) {
+		return this.slayerList.getS(x);
+	}
 	
-	
+	public void update() {
+		
+	}
 	
 	
 }

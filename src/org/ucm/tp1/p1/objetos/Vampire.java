@@ -1,5 +1,6 @@
 package org.ucm.tp1.p1.objetos;
 
+import java.util.Random;
 import org.ucm.tp1.p1.logic.Game;
 
 public class Vampire {
@@ -7,7 +8,7 @@ public class Vampire {
 	private int y;
 	private int life= 5;
 	private Game game;
-	public static final int HARM=1; //daño
+	public static final int HARM=1; //daï¿½o
 	public static final int SPEED = 2; // avanza 1 casilla cada 2 ciclos;
 	private Random rand;
 	boolean alive;
