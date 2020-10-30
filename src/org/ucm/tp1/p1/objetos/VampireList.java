@@ -20,8 +20,6 @@ public class VampireList {
 	}
 	
 	public int getContador() {
-		
-		
 		return this.cont;
 	}
 	

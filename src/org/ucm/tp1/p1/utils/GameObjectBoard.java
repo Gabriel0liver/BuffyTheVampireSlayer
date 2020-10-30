@@ -28,16 +28,37 @@ public class GameObjectBoard {
 		this.slayerList.addS(this.game,x, y);
 	}
 	
+	
+	
+	public void update() {
+		
+		mover();
+		
+		
+	}
+	
+	private void mover() {
+		for(int i=0;i<this.vampireList.getContador();i++){
+			Vampire vampiroLocal = this.vampireList.getV(i);
+			if(vampiroLocal.isAlive()) {
+				vampiroLocal.move(this.slayerList);
+				
+			}			
+		}	
+	}
+	
 	public Vampire getV(int x) {
-		return this.vampireList.getV(x);
+		return this.vampireList.getV(x);			
 	}
 	public Slayer getS(int x) {
 		return this.slayerList.getS(x);
 	}
 	
-	public void update() {
-		
+	public VampireList getVL() {
+		return this.vampireList;
 	}
-	
+	public SlayerList getSl() {
+		return this.slayerList;
+	}
 	
 }

@@ -20,7 +20,7 @@ public class SlayerList {
 		this.cont++;
 	}
 	
-public int contador() {
+public int getContador() {
 		
 		
 		return this.cont;
@@ -30,4 +30,6 @@ public int contador() {
 	public Slayer getS(int x) {
 		return this.slayers[x];
 	}
+	
+	
 }

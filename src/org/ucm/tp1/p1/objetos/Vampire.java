@@ -35,14 +35,28 @@ public boolean isAlive() {
 	}
 	
 	
-	public void move() {
+	public void move(SlayerList lista) {
 		// recuerda que el vampiro pasa por encima de los cazadores muertos
+		int i=0;
+		boolean encontrado=false;
+		
+		while(!encontrado && i<lista.getContador()) {
+			Slayer slayerLocal = lista.getS(i);
+			if(slayerLocal.getXS() ==(this.x-1) && slayerLocal.getYS() == this.y) {
+				encontrado = true;
+				attack(slayerLocal);
+			}
+			
+		}
+		if(encontrado == false) {
+			this.x--;
+		}
 		
 		
 		
 		
 	}
-	public void attack(SlayerList slayerList, int i) {// el game tiene que ejecutar el ataque
+	public void attack(Slayer slayer) {// el game tiene que ejecutar el ataque
 		
 		
 		
@@ -53,11 +67,11 @@ public boolean isAlive() {
 	}
 	
 	
-	public int getX() {
+	public int getXV() {
 		
 		return this.x;
 	}
-public int getY() {
+public int getYV() {
 		
 		return this.y;
 	}

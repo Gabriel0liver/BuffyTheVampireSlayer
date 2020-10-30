@@ -9,7 +9,7 @@ public class Slayer {
 	private Game game;
 	private boolean alive;
 	public static final int COST= 50;
-	public static final int HARM = 1; //daï¿½o
+	public static final int HARM = 1; //daño
 	
 	
 	
@@ -36,22 +36,22 @@ public class Slayer {
 		isAlive();
 	}
 	public boolean attack(VampireList vampireList, int i) { // el game tiene que ejecutar el ataque
-		//busca al vampiro que has disparado y devuelve que vampiro fue disparado, 
+		//busca al vampiro que has disparado y devuelve que vampiro fué disparado, 
 		
 		
-		 i = 0; //ubicacion
+		 i = 0; //ubicación
 		int shot = this.x;
 		boolean success = false;
 		while(shot < this.game.level.dimensionx()  || success== false) { // longitud de x, esta en this.game.
 			
 			Vampire localVampire = vampireList.getV(i);
-			//DUDA : si manipulo el local vampire entonces tambiï¿½n manipulo vampiros[i]?
-			//considerarï¿½ que se puede ya que "insertar argumento punteros"
+			//DUDA : si manipulo el local vampire entonces también manipulo vampiros[i]?
+			//consideraré que se puede ya que "insertar argumento punteros"
 			
 			while( i<vampireList.getContador() || success == false) {
 				
-				int xLocal =localVampire.getX();
-				int yLocal = localVampire.getY();
+				int xLocal =localVampire.getXV();
+				int yLocal = localVampire.getYV();
 				
 				if(yLocal == this.y && xLocal==shot) {
 					success= true;
@@ -78,11 +78,19 @@ public class Slayer {
 	
 	
 	
-	
-	
-	
-	
-	
-	
+public int getXS(){
+	return this.x;	
 }
+public int getYS(){
+	return this.y;	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
