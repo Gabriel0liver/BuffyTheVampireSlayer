@@ -30,15 +30,10 @@ public class GameObjectBoard {
 	
 	
 	
-	public void update() {
-		
+	public void update() {//actualiza los objetos
 		move();
 		attack();
 		limpiar();
-		
-		
-		
-		
 	}
 	private void attack() {
 		
@@ -52,7 +47,6 @@ public class GameObjectBoard {
 			vampiroLocal.attack();			
 		}	
 	}
-
 	private void move() {
 
 		boolean puede=true;
@@ -73,7 +67,6 @@ public class GameObjectBoard {
 			puede = true;
 		}	
 	}
-
 	private void limpiar() {
 		for(int i = 0; i<this.slayerList.getContador();i++) {
 			Slayer slayerLocal = this.slayerList.getS(i);
@@ -89,19 +82,54 @@ public class GameObjectBoard {
 			}
 		}	
 	}
-	public boolean attackS(int x, int y) {//el slayer pega un tiro
+	
+	
+	public boolean attackS(int x, int y,int harm) {//el slayer pega un tiro al vampiro
 		boolean encontrado=false;
-		int ubicacion =0;
-		encontrado = this.vampireList.encontrarVampiroDisparado(x, y, ubicacion);
-		
-		if (encontrado = true) {
-		
+		Vampire vampiroLocal= this.buscarVampire(x, y);
+		if(vampiroLocal != null) {
+			vampiroLocal.decreaseLife(harm);
+			encontrado=true;
 		}
-		
 		return encontrado;
 	
 	}
-	public void attackV(int x, int y) {
+	public boolean attackV(int x, int y,int harm) {//el vampiro muerde al slayer
+		boolean encontrado=false;
+		Slayer slayerLocal= this.buscarSlayer(x, y);
+		if(slayerLocal != null) {
+			slayerLocal.decreaseLife(harm);
+			encontrado=true;
+		}
+		return encontrado;
+	}
+	
+	
+	public Vampire buscarVampire(int x, int y) {
+		boolean  encontrado=false;
+		int i=0;
+		while(i<this.vampireList.getContador() && !encontrado) {
+			Vampire vampiroLocal = this.vampireList.getV(i);
+			if( vampiroLocal.getXV() == x && vampiroLocal.getYV() == y) {
+				 encontrado = true; 
+				 return this.vampireList.getV(i);
+			}
+			i++;
+		}	
+			return null;	
+	}
+	public Slayer buscarSlayer (int x, int y) {
+		boolean  encontrado=false;
+		int i=0;
+		while(i<this.slayerList.getContador() && !encontrado) {
+			Slayer SlayerLocal = this.getS(i);
+			if( SlayerLocal.getXS() == x &&SlayerLocal.getYS() == y) {
+				 encontrado = true;
+				 return this.slayerList.getS(i);
+			}
+			i++;
+		}
+		return null;
 		
 	}
 	

@@ -31,20 +31,6 @@ public class VampireList {
 		this.cont--;
 	}
 	
-	public boolean encontrarVampiroDisparado(int x,int y,int ubicacion) {
-		boolean  encontrado=false;
-		int i=0;
-		while(i<this.cont || !encontrado) {
-			Vampire vampiroLocal = this.getV(i);
-			if( vampiroLocal.getXV() == x && vampiroLocal.getYV() == y) {
-				 encontrado = true;
-			}
-			i++;
-		}
-		
-		return encontrado;
-	}
-	
 	
 	
 	public int getContador() {

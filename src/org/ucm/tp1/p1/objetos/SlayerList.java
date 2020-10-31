@@ -31,7 +31,8 @@ public class SlayerList {
 	
 	
 	
-public int getContador() {	
+	
+	public int getContador() {	
 		return this.cont;
 	}
 	

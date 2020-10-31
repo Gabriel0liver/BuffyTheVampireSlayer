@@ -30,8 +30,6 @@ public boolean isAlive() {
 	}
 	public void decreaseLife(int harm) {
 		this.life= this.life -harm;
-		
-		isAlive();
 	}
 	
 	
@@ -59,9 +57,16 @@ public boolean isAlive() {
 	
 	
 	public void attack() {// el game tiene que ejecutar el ataque
-		this.game.attackV(this.x -1,this.y);
+		int ubicacion = this.x+1;
+		boolean atacado=false;
+		
+		while(!atacado && ubicacion < this.game.level.dimensionx()) {
+			int harm = this.HARM;
+			atacado = this.game.attackV(ubicacion,this.y,harm);
+			ubicacion++;
+		}
 	}
-	public string toString{
+	public String toString{
 		String s = "  ";
 		return s;
 	}

@@ -31,29 +31,25 @@ public class Slayer {
 
 	
 	public void decreaseLife(int harm) {
-		this.life= this.life -harm;
-		
-		isAlive();
+		this.life= this.life - harm;
 	}
+	
 	public void attack() { // el game tiene que ejecutar el ataque
 		int ubicacion = this.x+1;
 		boolean atacado=false;
 		
 		while(!atacado && ubicacion < this.game.level.dimensionx()) {
-			atacado = this.game.attackS(ubicacion,this.y);
+			int harm = this.HARM;
+			atacado = this.game.attackS(ubicacion,this.y,harm);
 			ubicacion++;
 		}
 	}
-	
-	
+		
 	
 	public void toString{
 		
 				
 	}
-	
-	
-	
 	
 	
 	
@@ -64,12 +60,5 @@ public int getYS(){
 	return this.y;	
 }
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
