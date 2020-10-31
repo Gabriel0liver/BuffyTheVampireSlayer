@@ -59,10 +59,11 @@ public boolean isAlive() {
 	
 	
 	public void attack() {// el game tiene que ejecutar el ataque
-		this.game.attackV();
+		this.game.attackV(this.x -1,this.y);
 	}
-	public void toString{
-		
+	public string toString{
+		String s = "  ";
+		return s;
 	}
 	
 	

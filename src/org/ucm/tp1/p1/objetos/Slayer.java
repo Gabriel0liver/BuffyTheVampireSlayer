@@ -36,7 +36,13 @@ public class Slayer {
 		isAlive();
 	}
 	public void attack() { // el game tiene que ejecutar el ataque
-		this.game.attackS(this.x,this.y);
+		int ubicacion = this.x+1;
+		boolean atacado=false;
+		
+		while(!atacado && ubicacion < this.game.level.dimensionx()) {
+			atacado = this.game.attackS(ubicacion,this.y);
+			ubicacion++;
+		}
 	}
 	
 	

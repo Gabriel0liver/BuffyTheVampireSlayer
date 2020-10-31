@@ -46,10 +46,7 @@ public class GameObjectBoard {
 			Slayer slayerLocal = this.slayerList.getS(i);
 			slayerLocal.attack();
 		}
-		// for ( tipo <nombre variable> : lista/array de tipo)
-		for (Vampire v : this.vampireList) {
-			v.attack();
-		}
+		
 		for(int i=0;i<this.vampireList.getContador();i++){
 			Vampire vampiroLocal = this.vampireList.getV(i);
 			vampiroLocal.attack();			
@@ -94,11 +91,14 @@ public class GameObjectBoard {
 	}
 	public boolean attackS(int x, int y) {//el slayer pega un tiro
 		boolean encontrado=false;
-		ubicacion = x+1;
-		Vampire vampiroDisparado;
+		int ubicacion =0;
+		encontrado = this.vampireList.encontrarVampiroDisparado(x, y, ubicacion);
 		
-		return encontrado
-	}
+		if (encontrado = true) {
+		
+		}
+		
+		return encontrado;
 	
 	}
 	public void attackV(int x, int y) {

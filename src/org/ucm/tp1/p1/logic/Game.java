@@ -49,8 +49,8 @@ public class Game {
 	public void attackV(int x, int y) {
 		
 	}
-	public void attackS(int x, int y) {
-		this.board.attackS(x,y);
+	public boolean attackS(int x, int y) {
+		return this.board.attackS(x,y);
 	}
 	public void draw() {
 		this.printer.toString();
