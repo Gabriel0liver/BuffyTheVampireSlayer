@@ -12,6 +12,7 @@ public class Game {
 	private int dim_y;
 	private int contadorCiclos;
 	private GamePrinter printer;
+	private boolean GameOver;
 	private Random rand;
 	private Player player;
 	public Long seed;
@@ -27,6 +28,7 @@ public class Game {
 		this.player = new Player(this.rand);
 		this.board = new GameObjectBoard(this);
 		this.contadorCiclos = 0;
+		this.GameOver = false;
 	}
 	
 	public boolean addSlayer(int x, int y) {
@@ -56,5 +58,12 @@ public class Game {
 		this.printer.toString();
 	}
 	
+	public void setGO(boolean acabado){
+		this.GameOver = acabado;	
+	}
+	
+	public boolean getGO(){
+		return this.GameOver;
+	}
 	
 }

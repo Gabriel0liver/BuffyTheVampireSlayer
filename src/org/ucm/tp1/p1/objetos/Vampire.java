@@ -9,7 +9,7 @@ public class Vampire {
 	private int life= 5;
 	private Game game;
 	public static final int HARM=1; //dagno
-	public static final int SPEED = 2; // avanza 1 casilla cada 2 ciclos;
+	public static  int SPEED = 2; // avanza 1 casilla cada 2 ciclos; //hay que ponerle el final.
 	private Random rand;
 	boolean alive;
 	
@@ -42,7 +42,8 @@ public boolean isAlive() {
 			}
 		}
 		else{
-			//game over
+			boolean gameOver = true;
+			this.game.setGO(gameOver);
 		}
 		
 		
@@ -66,9 +67,11 @@ public boolean isAlive() {
 			ubicacion++;
 		}
 	}
-	public String toString{
-		String s = "  ";
+	public String toString(){
+		String s = "V ["+this.life+"]";
+		
 		return s;
+				
 	}
 	
 	

@@ -70,6 +70,8 @@ public class Controller {
     			System.out.println("Game Over");
     			this.running = false;
     		}
+    		
+    		this.running = this.game.getGO();
     	}
     }
     

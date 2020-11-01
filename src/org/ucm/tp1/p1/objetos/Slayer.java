@@ -46,8 +46,10 @@ public class Slayer {
 	}
 		
 	
-	public void toString{
+	public String toString(){
+		String s = "S ["+this.life+"]";
 		
+		return s;
 				
 	}
 	
