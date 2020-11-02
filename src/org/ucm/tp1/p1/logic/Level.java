@@ -41,5 +41,13 @@ public enum Level {
     public int dimensiony() {
     	return this.dim_y;
     }
+    
+    public int getNumV() {
+    	return this.numberOfVampires;
+    }
+    
+    public double getVampF() {
+    	return this.vampireFrequency;
+    }
 
 }

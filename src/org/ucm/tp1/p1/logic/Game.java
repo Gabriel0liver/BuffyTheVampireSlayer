@@ -3,6 +3,8 @@ package org.ucm.tp1.p1.logic;
 import java.util.Random;
 
 import org.ucm.tp1.p1.objetos.Player;
+import org.ucm.tp1.p1.objetos.Vampire;
+import org.ucm.tp1.p1.objetos.VampireList;
 import org.ucm.tp1.p1.utils.GameObjectBoard;
 import org.ucm.tp1.p1.view.GamePrinter;
 
@@ -21,6 +23,7 @@ public class Game {
 	public Game(Long seed, Level level) {
 		this.seed = seed;
 		this.level = level;
+		Vampire.inicializarNivel(level);
 		this.dim_x = this.level.dimensionx();
 		this.dim_y = this.level.dimensiony();
 		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);
@@ -32,12 +35,26 @@ public class Game {
 	}
 	
 	public boolean addSlayer(int x, int y) {
-		
-		return true;
+		if((x < dim_x && x >= 0) && (y < dim_y && y >= 0)) {
+			if((this.board.buscarSlayer(x, y) == null) && (this.board.buscarVampire(x, y) == null)) {
+				if(this.player.puedeComprar()) {
+					this.player.comprar();
+					this.board.addS(x, y);
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public void addVampire() {
-		
+		if((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
+			int x = this.dim_x - 1;  
+			int y = rand.nextInt(this.dim_y);
+			if(this.board.buscarVampire(x, y) == null) {
+				this.board.addV(x, y);
+			}
+		}
 	}
 	
 	
@@ -46,7 +63,9 @@ public class Game {
 		this.addVampire(); 
 		this.board.update();
 		this.contadorCiclos += 1;
-		
+		if(Vampire.VampPres() == 0 && Vampire.VampRest() == 0) {
+			setGO(true);
+		}
 	}
 	
 	
@@ -59,8 +78,8 @@ public class Game {
 	public void draw() {
 		System.out.println("Number of cycles: " + this.contadorCiclos);
 		System.out.println("Coins: " + this.player.mostrarCoins());
-		System.out.println("Remaining vampires: ");
-		System.out.println("Vampires on the board: ");
+		System.out.println("Remaining vampires: " + Vampire.VampRest());
+		System.out.println("Vampires on the board: " + Vampire.VampPres());
 		System.out.println(this.printer.toString());
 		
 	}

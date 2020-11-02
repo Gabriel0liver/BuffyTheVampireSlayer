@@ -9,7 +9,7 @@ public class Slayer {
 	private Game game;
 	private boolean alive;
 	public static final int COST= 50;
-	public static final int HARM = 1; //daño
+	public static final int HARM = 1; //daï¿½o
 	
 	
 	
@@ -53,6 +53,9 @@ public class Slayer {
 				
 	}
 	
+	public int getLife() {
+		return this.life;
+	}
 	
 	
 public int getXS(){

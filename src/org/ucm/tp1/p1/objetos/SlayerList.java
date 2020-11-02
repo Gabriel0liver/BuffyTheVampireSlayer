@@ -16,7 +16,6 @@ public class SlayerList {
 	
 	public void addS(Game game, int x, int y) {
 		this.slayers[this.cont] = new Slayer(game,x,y);
-		
 		this.cont++;
 	}
 

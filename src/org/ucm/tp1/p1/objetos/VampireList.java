@@ -2,6 +2,7 @@ package org.ucm.tp1.p1.objetos;
 
 
 import org.ucm.tp1.p1.logic.Game;
+import org.ucm.tp1.p1.logic.Level;
 
 public class VampireList {
 	private int MAX= 1000;
@@ -18,7 +19,6 @@ public class VampireList {
 	
 	public void addV(Game game, int x, int y) {
 		this.vampiros[this.cont] = new Vampire(game,x,y);
-		
 		this.cont++;
 	}
 	

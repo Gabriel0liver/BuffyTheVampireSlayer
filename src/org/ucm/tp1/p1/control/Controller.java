@@ -30,9 +30,8 @@ public class Controller {
 	    this.in = scanner;
     }
     
-    public void run() {	
-    	this.running = true;
-    	while(this.running) {// aqui empieza el bucle de la partida.
+    public void run() {
+    	while(!this.game.getGO()) {
     		this.game.draw();
     		System.out.print("Command >");
     		String s = in.nextLine();
@@ -56,19 +55,21 @@ public class Controller {
     				break;
     			}
     			if(this.game.addSlayer(x,y)) {
-    				this.game.update();
+    				//
+    			}else {
+    				System.out.println();
+    				System.out.println("[ERROR]: Invalidposition");
+    				System.out.println();
     			}
     		}
     		else if(words[0].equals("r") || words[0].equals("reset")) {
     			this.game = new Game(this.game.seed,this.game.level);
     		}
     		else if(words[0].equals("e") || words[0].equals("exit")) {
-    			System.out.println("Game Over");
-    			this.running = false;
+    			this.game.setGO(true);
     		}
-    		
-    		this.running = !this.game.getGO();
     	}
+    	System.out.println("Game Over");
     }
     
 

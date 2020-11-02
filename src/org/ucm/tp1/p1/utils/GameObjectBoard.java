@@ -5,6 +5,7 @@ import org.ucm.tp1.p1.objetos.SlayerList;
 import org.ucm.tp1.p1.objetos.Vampire;
 import org.ucm.tp1.p1.objetos.VampireList;
 import org.ucm.tp1.p1.logic.Game;
+import org.ucm.tp1.p1.logic.Level;
 
 public class GameObjectBoard {
 	
@@ -19,10 +20,9 @@ public class GameObjectBoard {
 		this.game = game;
 	}
 	
-	public void addV(int y) {
-			this.vampireList.addV(this.game, this.game.level.dimensionx() -1, y);
-			
-		}
+	public void addV(int x, int y) {
+		this.vampireList.addV(this.game, x, y);	
+	}
 		
 	public void addS (int x, int y) {
 		this.slayerList.addS(this.game,x, y);
@@ -32,10 +32,10 @@ public class GameObjectBoard {
 	
 	public void update() {//actualiza los objetos
 		move();
-		
 		attack();		
 		limpiar();
 	}
+	
 	private void attack() {
 		
 		for(int i = 0; i<this.slayerList.getContador();i++) {
