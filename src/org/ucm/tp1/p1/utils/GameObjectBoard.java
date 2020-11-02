@@ -19,8 +19,8 @@ public class GameObjectBoard {
 		this.game = game;
 	}
 	
-	public void addV(int x, int y) {
-			this.vampireList.addV(this.game, x, y);
+	public void addV(int y) {
+			this.vampireList.addV(this.game, this.game.level.dimensionx() -1, y);
 			
 		}
 		
@@ -32,7 +32,8 @@ public class GameObjectBoard {
 	
 	public void update() {//actualiza los objetos
 		move();
-		attack();
+		
+		attack();		
 		limpiar();
 	}
 	private void attack() {

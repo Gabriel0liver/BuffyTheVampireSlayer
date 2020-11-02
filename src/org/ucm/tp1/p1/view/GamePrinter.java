@@ -19,6 +19,10 @@ public class GamePrinter {
 	}
 	
 	private void encodeGame(Game game) {
+		
+		
+		
+		
 	}
 	
 	 public String toString() {
@@ -54,4 +58,11 @@ public class GamePrinter {
 
 		return str.toString();
 	    }
+	 
+	 public void getBoard(){
+		 for 
+		 
+		 
+	 }
+	 
 }
