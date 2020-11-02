@@ -10,7 +10,8 @@ public class Vampire {
 	private int life= 5;
 	private Game game;
 	public static final int HARM=1; //dagno
-	public static  int SPEED = 2; // avanza 1 casilla cada 2 ciclos; //hay que ponerle el final.
+	public static  final int SPEED = 1; // avanza 1 casilla cada 2 ciclos; //hay que ponerle el final.
+	private int nextStep;
 	private static Level level = null;
 	private static int vampirosPorSalir;
 	private static int vampirosEnElTablero = 0;
@@ -21,6 +22,7 @@ public class Vampire {
 		this.y=y;
 		this.game = game;
 		this.alive = true;
+		this.nextStep = Vampire.SPEED;
 		Vampire.vampirosEnElTablero ++;
 		Vampire.vampirosPorSalir --;
 	}
@@ -59,26 +61,13 @@ public boolean isAlive() {
 	
 	
 	public void move() {
-		if(this.x != 0) {
-			nextStep();
-			if(Vampire.SPEED == 0) {
-				this.x--;
-				nextStep();
-			}
-		}
-		else{
-			boolean gameOver = true;
-			this.game.setGO(gameOver);
+		if(this.nextStep <= 0) {
+			this.x --;
+			this.nextStep = Vampire.SPEED;
+		}else {
+			this.nextStep --;
 		}
 		
-		
-	}
-	public void nextStep() {
-		if(Vampire.SPEED != 0) {
-			Vampire.SPEED--;
-		}
-		else
-			Vampire.SPEED = 2;
 	}
 	
 	

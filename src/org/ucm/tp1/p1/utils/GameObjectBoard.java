@@ -48,12 +48,12 @@ public class GameObjectBoard {
 			vampiroLocal.attack();			
 		}	
 	}
-	private void move() {
-		int j=0;
+	private void move() {	
 		for(int i=0;i<this.vampireList.getContador();i++){
 			Vampire vampiroLocal = this.vampireList.getV(i);
-			boolean puede=false;
-			while( j<this.slayerList.getContador() && !puede) {
+			int j=0;
+			boolean puede=true;
+			while( j<this.slayerList.getContador() && puede) {
 				Slayer slayerLocal = this.slayerList.getS(j);
 				if(slayerLocal.getXS()== (vampiroLocal.getXV()-1) && slayerLocal.getYS() == vampiroLocal.getYV()) {
 					puede = false;
