@@ -83,14 +83,8 @@ public boolean isAlive() {
 	
 	
 	public void attack() {// el game tiene que ejecutar el ataque
-		int ubicacion = this.x+1;
-		boolean atacado=false;
+		this.game.attackV(this.x-1,this.y,Vampire.HARM);
 		
-		while(!atacado && ubicacion < this.game.level.dimensionx()) {
-			int harm = Vampire.HARM;
-			atacado = this.game.attackV(ubicacion,this.y,harm);
-			ubicacion++;
-		}
 	}
 	public String toString(){
 		String s = "V ["+this.life+"]";

@@ -49,11 +49,10 @@ public class GameObjectBoard {
 		}	
 	}
 	private void move() {
-
-		boolean puede=true;
 		int j=0;
 		for(int i=0;i<this.vampireList.getContador();i++){
 			Vampire vampiroLocal = this.vampireList.getV(i);
+			boolean puede=false;
 			while( j<this.slayerList.getContador() && !puede) {
 				Slayer slayerLocal = this.slayerList.getS(j);
 				if(slayerLocal.getXS()== (vampiroLocal.getXV()-1) && slayerLocal.getYS() == vampiroLocal.getYV()) {
@@ -64,8 +63,6 @@ public class GameObjectBoard {
 			if(puede) {
 				vampiroLocal.move();
 			}
-				
-			puede = true;
 		}	
 	}
 	private void limpiar() {
@@ -95,14 +92,11 @@ public class GameObjectBoard {
 		return encontrado;
 	
 	}
-	public boolean attackV(int x, int y,int harm) {//el vampiro muerde al slayer
-		boolean encontrado=false;
+	public void attackV(int x, int y,int harm) {//el vampiro muerde al slayer
 		Slayer slayerLocal= this.buscarSlayer(x, y);
 		if(slayerLocal != null) {
 			slayerLocal.decreaseLife(harm);
-			encontrado=true;
 		}
-		return encontrado;
 	}
 	
 	
