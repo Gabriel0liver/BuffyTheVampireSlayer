@@ -34,6 +34,7 @@ public class Controller {
     	this.running = true;
     	while(this.running) {// aqui empieza el bucle de la partida.
     		this.game.draw();
+    		System.out.print("Command >");
     		String s = in.nextLine();
     		s = s.trim();
     		String [] words = s.split(" +");
@@ -41,12 +42,7 @@ public class Controller {
     			this.game.update();
     		}
     		else if(words[0].equals("h") || words[0].equals("help")) {
-    			System.out.println("Available commands:");
-    			System.out.println("[a]dd <x> <y>: add a slayer in position x, y");
-    			System.out.println("[h]elp: show this help");
-    			System.out.println("[r]eset: reset game");
-    			System.out.println("[e]xit: exit game");
-    			System.out.println("[n]one | []: update");
+    			System.out.println(this.helpMsg);
     		}
     		else if(words[0].equals("a") || words[0].equals("add")) {
     			int x;
@@ -71,7 +67,7 @@ public class Controller {
     			this.running = false;
     		}
     		
-    		this.running = this.game.getGO();
+    		this.running = !this.game.getGO();
     	}
     }
     

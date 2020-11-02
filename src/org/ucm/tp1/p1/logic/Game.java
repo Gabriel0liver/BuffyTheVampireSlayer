@@ -23,7 +23,7 @@ public class Game {
 		this.level = level;
 		this.dim_x = this.level.dimensionx();
 		this.dim_y = this.level.dimensiony();
-		this.printer = new GamePrinter(this, this.dim_y, this.dim_x);
+		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);
 		this.rand = new Random(seed);
 		this.player = new Player(this.rand);
 		this.board = new GameObjectBoard(this);
@@ -57,7 +57,12 @@ public class Game {
 		return this.board.attackS(x,y,harm);
 	}
 	public void draw() {
-		this.printer.toString();
+		System.out.println("Number of cycles: " + this.contadorCiclos);
+		System.out.println("Coins: " + this.player.mostrarCoins());
+		System.out.println("Remaining vampires: ");
+		System.out.println("Vampires on the board: ");
+		System.out.println(this.printer.toString());
+		
 	}
 	
 	public void setGO(boolean acabado){

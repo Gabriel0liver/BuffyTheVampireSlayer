@@ -16,13 +16,24 @@ public class GamePrinter {
 		this.game = game;
 		this.numRows = rows;
 		this.numCols = cols;
+		this.board = new String[numRows][numCols];
 	}
 	
 	private void encodeGame(Game game) {
 		
-		
-		
-		
+		for(int i = 0; i < numRows; i++) {
+			for(int j = 0; j < numCols; j++) {
+				if(game.board.buscarSlayer(i, j) != null) {
+					this.board[i][j] = "S";
+				}
+				else if(game.board.buscarVampire(i, j) != null) {
+					this.board[i][j] = "V";
+				}
+				else {
+					this.board[i][j] = "";
+				}
+			}
+		}
 	}
 	
 	 public String toString() {
@@ -59,8 +70,7 @@ public class GamePrinter {
 		return str.toString();
 	    }
 	 
-	 public void getBoard(){
-		 for 
+	 public void getBoard() {
 		 
 		 
 	 }
