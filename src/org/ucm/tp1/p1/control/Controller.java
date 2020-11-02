@@ -19,6 +19,7 @@ public class Controller {
 	public static final String unknownCommandMsg = String.format("Unknown command");
 	public static final String invalidCommandMsg = String.format("Invalid command");
 	public static final String invalidPositionMsg = String.format("Invalid position");
+	public static final String debugCommandMsg = String.format("%n[DEBUG] Executing: ");
 
     private Game game;
     private Scanner in;
@@ -36,7 +37,9 @@ public class Controller {
     		System.out.print("Command >");
     		String s = in.nextLine();
     		s = s.trim();
+    		System.out.println(Controller.debugCommandMsg + s);
     		String [] words = s.split(" +");
+    		words[0] = words[0].toLowerCase();
     		if(words[0].equals("") || words[0].equals("n") || words[0].equals("none")) {
     			this.game.update();
     		}
@@ -55,7 +58,7 @@ public class Controller {
     				break;
     			}
     			if(this.game.addSlayer(x,y)) {
-    				//
+    				this.game.update();
     			}else {
     				System.out.println();
     				System.out.println("[ERROR]: Invalidposition");

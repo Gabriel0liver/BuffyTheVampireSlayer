@@ -35,7 +35,7 @@ public class Game {
 	}
 	
 	public boolean addSlayer(int x, int y) {
-		if((x < dim_x && x >= 0) && (y < dim_y && y >= 0)) {
+		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
 			if((this.board.buscarSlayer(x, y) == null) && (this.board.buscarVampire(x, y) == null)) {
 				if(this.player.puedeComprar()) {
 					this.player.comprar();
