@@ -32,8 +32,8 @@ public class Controller {
     }
     
     public void run() {
+    	this.game.draw();
     	while(!this.game.getGO()) {
-    		this.game.draw();
     		System.out.print("Command >");
     		String s = in.nextLine();
     		s = s.trim();
@@ -42,6 +42,7 @@ public class Controller {
     		words[0] = words[0].toLowerCase();
     		if(words[0].equals("") || words[0].equals("n") || words[0].equals("none")) {
     			this.game.update();
+    			this.game.draw();
     		}
     		else if(words[0].equals("h") || words[0].equals("help")) {
     			System.out.println(this.helpMsg);
@@ -59,6 +60,7 @@ public class Controller {
     			}
     			if(this.game.addSlayer(x,y)) {
     				this.game.update();
+    				this.game.draw();
     			}else {
     				System.out.println();
     				System.out.println("[ERROR]: Invalidposition");
@@ -67,6 +69,7 @@ public class Controller {
     		}
     		else if(words[0].equals("r") || words[0].equals("reset")) {
     			this.game = new Game(this.game.seed,this.game.level);
+    			this.game.draw();
     		}
     		else if(words[0].equals("e") || words[0].equals("exit")) {
     			this.game.setGO(true);

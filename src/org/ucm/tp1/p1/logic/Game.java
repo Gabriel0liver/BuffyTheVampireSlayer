@@ -60,8 +60,8 @@ public class Game {
 	
 	public void update() {		
 		this.player.addCoins();
-		this.addVampire(); 
 		this.board.update();
+		this.addVampire(); 
 		this.contadorCiclos += 1;
 		if(Vampire.VampPres() == 0 && Vampire.VampRest() == 0) {
 			setGO(true);

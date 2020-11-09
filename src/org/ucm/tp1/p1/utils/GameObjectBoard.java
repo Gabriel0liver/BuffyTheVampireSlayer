@@ -45,7 +45,9 @@ public class GameObjectBoard {
 		
 		for(int i=0;i<this.vampireList.getContador();i++){
 			Vampire vampiroLocal = this.vampireList.getV(i);
-			vampiroLocal.attack();			
+			if(vampiroLocal.isAlive()) {
+				vampiroLocal.attack();		
+			}	
 		}	
 	}
 	private void move() {	
