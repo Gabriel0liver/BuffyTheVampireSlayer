@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>test_cases</name>
-			<type>2</type>
-			<location>C:/Users/Gabriel/Desktop/Universidad/TP/BuffyTheVampireSlayer/test_cases</location>
-		</link>
-	</linkedResources>
 </projectDescription>
