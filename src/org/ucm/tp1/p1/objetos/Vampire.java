@@ -22,7 +22,7 @@ public class Vampire {
 		this.y=y;
 		this.game = game;
 		this.alive = true;
-		this.nextStep = Vampire.SPEED + 1;
+		this.nextStep = Vampire.SPEED;
 		Vampire.vampirosEnElTablero ++;
 		Vampire.vampirosPorSalir --;
 	}
@@ -48,7 +48,7 @@ public class Vampire {
 	
 public boolean isAlive() {
 		
-		if (this.life <= 0) {
+		if (this.life <= 0 && this.alive) {
 			this.alive = false;
 			Vampire.vampirosEnElTablero --;
 		}

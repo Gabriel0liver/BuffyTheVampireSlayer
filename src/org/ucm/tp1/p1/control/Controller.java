@@ -34,7 +34,7 @@ public class Controller {
     public void run() {
     	this.game.draw();
     	while(!this.game.getGO()) {
-    		
+
     		System.out.print("Command >");
     		String s = in.nextLine();
     		s = s.trim();
@@ -63,9 +63,12 @@ public class Controller {
     			if(this.game.addSlayer(x,y)) {
     				this.game.update();
     				this.game.draw();
+
     				
     			}
+    		
     			else {
+
     				System.out.println();
     				System.out.println("[ERROR]: Invalidposition");
     				System.out.println();
