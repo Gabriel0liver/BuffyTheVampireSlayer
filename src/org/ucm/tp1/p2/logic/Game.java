@@ -1,17 +1,18 @@
-package org.ucm.tp1.p1.logic;
+package org.ucm.tp1.p2.logic;
 
 import java.util.Random;
 
-import org.ucm.tp1.p1.objetos.Player;
-import org.ucm.tp1.p1.objetos.Vampire;
-import org.ucm.tp1.p1.objetos.VampireList;
-import org.ucm.tp1.p1.utils.GameObjectBoard;
-import org.ucm.tp1.p1.view.GamePrinter;
+import org.ucm.tp1.p2.GameObjects.Player;
+import org.ucm.tp1.p2.GameObjects.GameObjectBoard;
+import org.ucm.tp1.p2.GameObjects.GameObject;
+import org.ucm.tp1.p2.GameObjects.IAttack;
+import org.ucm.tp1.p2.view.GamePrinter;
+import org.ucm.tp1.p2.view.*;
 
-public class Game {
-	private int dim_y;
-	public GameObjectBoard board;
+public class Game implements IPrintable {
+	public GameObjectBoard board; 
 	private int dim_x;
+	private int dim_y;
 	private int contadorCiclos;
 	private GamePrinter printer;
 	private boolean GameOver;
@@ -45,6 +46,9 @@ public class Game {
 			}
 		}
 		return false;
+		
+		
+		
 	}
 	
 	public void addVampire() {
@@ -68,13 +72,15 @@ public class Game {
 		}
 	}
 	
+	public GameObject getObjectInPosition(int x, int y) {
+		return board.getObjectInPosition(x, y);
+	}
 	
-	public void attackV(int x, int y,int harm) {
-		this.board.attackV(x, y, harm);
+	public IAttack getAttackableInPosition(int x, int y) {
+		return board.getObjectInPosition(x, y);
 	}
-	public boolean attackS(int x, int y,int  harm) {
-		return this.board.attackS(x,y,harm);
-	}
+	
+	
 	public void draw() {
 		System.out.println("Number of cycles: " + this.contadorCiclos);
 		System.out.println("Coins: " + this.player.mostrarCoins());
@@ -90,6 +96,12 @@ public class Game {
 	
 	public boolean getGO(){
 		return this.GameOver;
+	}
+	public int getDimX() {
+		return this.dim_x;
+	}
+	public int getDimY() {
+		return this.dim_y;
 	}
 	
 }
