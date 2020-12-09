@@ -1,9 +1,9 @@
 package org.ucm.tp1.p2.GameObjects;
 
-import org.ucm.tp1.p1.logic.Game;
+import org.ucm.tp1.p2.logic.Game;
 
 public class Slayer extends GameObject{
-	// lo de harm depende de cada slayer. parte 2 práctica
+	// lo de harm depende de cada slayer. parte 2 prï¿½ctica
 	
 	private boolean alive;
 	public static final int COST= 50;

@@ -1,4 +1,4 @@
-package org.ucm.tp1.p1.control;
+package org.ucm.tp1.p2.control;
 
 import java.util.Scanner;
 

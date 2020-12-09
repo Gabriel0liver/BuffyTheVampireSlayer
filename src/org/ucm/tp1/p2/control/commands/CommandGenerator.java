@@ -1,4 +1,4 @@
-package org.ucm.tp1.p1.control.commands;
+package org.ucm.tp1.p2.control.commands;
 
 public class CommandGenerator {
 	private static Command[] availableCommands= {
