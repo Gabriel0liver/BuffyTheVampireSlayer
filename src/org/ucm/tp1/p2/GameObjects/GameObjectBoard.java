@@ -3,6 +3,10 @@ package org.ucm.tp1.p2.GameObjects;
 public class GameObjectBoard {
 		private GameObjectList gameobjects;
 		
+		public GameObjectBoard(GameObject g) {
+			this.gameobjects.add(null);
+		}
+		
 		public void update(){
 			
 			this.gameobjects.move();
@@ -32,9 +36,8 @@ public class GameObjectBoard {
 		
 		
 		
-		public IAttack getAttackableInPosition(int x, int y) {
-			
-			
+		public IAttack getAttackableInPosition(int x, int y) {//no creo que esté bien.
+			return this.gameobjects.getObjectPosition(x, y);
 			
 		}
 			

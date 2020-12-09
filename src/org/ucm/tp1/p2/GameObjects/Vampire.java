@@ -4,10 +4,7 @@ import org.ucm.tp1.p1.logic.Game;
 import org.ucm.tp1.p1.logic.Level;
 
 public class Vampire extends GameObject {
-	
-
-	
-		
+			
 		public static final int HARM=1; //dagno
 		public static  final int SPEED = 1; // avanza 1 casilla cada 2 ciclos; //hay que ponerle el final.
 		private int nextStep;
@@ -15,13 +12,16 @@ public class Vampire extends GameObject {
 		private static int vampirosPorSalir;
 		private static int vampirosEnElTablero = 0;
 		boolean alive;
+		private Game game;
 		
-		public Vampire(Game game,int x, int y) {
-			
+		public Vampire(int x, int y, Game game, int life, String s) {
+			super(x, y, life, s);
 			this.alive = true;
+			this.game= game;
 			this.nextStep = Vampire.SPEED;
 			Vampire.vampirosEnElTablero ++;
 			Vampire.vampirosPorSalir --;
+			//el contador de vampiros no deberia estar en la clase game o gameObjectBoard?
 		}
 		
 		public static void inicializarNivel(Level level) {
@@ -47,29 +47,51 @@ public class Vampire extends GameObject {
 		
 		
 		public void move() {
+			int x = getX();
 			if(this.nextStep <= 0) {
-				this.x --;
+				x --;
 				this.nextStep = Vampire.SPEED;
-				if(this.x < 0) {
+				setX(x);
+				
+				if(x < 0) {
 					this.game.setGO(true);
 				}
-			}else {
+			}
+			else {
 				this.nextStep --;
 			}
 			
 		}
-		
-		
-		
-		public void attack( {
-				if (isAlive () ) {
-					IAttack other = game.getAttackableInPosition(x - 1, y);
+
+		public void attack() {
+			if(isAlive()) {
+				IAttack other = game.getAttackableInPosition(getX()-1,getY()); 
+				//no tengo ni idea que tengo que hacer con getAttackableInPosition
 				
-				if (other != null )
-					other. receiveVampireAttack(HARM);
+				if(other != null) {
+					other.receiveVampireAttack(HARM);
 				}
 			}
+		}
 
+		//recibir Ataque
+		default boolean receiveSlayerAttack(int damage) {
+			decreaseLife(damage);
+			return true;
+			}
+		default boolean receiveVampireAttack(int damage) {
+			
+			return false;
+			}
+		default boolean receiveLightFlash(){
+			return false;
+			}
+		default boolean receiveGarlicPush(){
+			return false;
+			}
+		default boolean receiveDraculaAttack(){
+			return false;
+			}
 			
 		
 
