@@ -25,14 +25,27 @@ public class Game implements IPrintable {
 		this.seed = seed;
 		this.level = level;
 		Vampire.inicializarNivel(level);
-		this.dim_x = this.level.dimensionx();
-		this.dim_y = this.level.dimensiony();
-		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);
+		this.dim_x = this.level.getDimX();
+		this.dim_y = this.level.getDimY();
+		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);//como puedo meter aquí el IPrintable
 		this.rand = new Random(seed);
 		this.player = new Player(this.rand);
 		this.board = new GameObjectBoard(this);
 		this.contadorCiclos = 0;
 		this.GameOver = false;
+	}
+	
+	
+	//metodos de la interfaz IPrintable. Que por cierto, no comprendo la relación IPrintable con gameprinter.
+	
+	String getPositionToString(int x, int y) {
+		GameObject g = getObjectInPosition(x,y);
+
+		return g.toString();
+	}
+	String getInfo() { //no se que hace eso
+		String s="";
+		return s;
 	}
 	
 	public boolean addSlayer(int x, int y) {
@@ -76,7 +89,7 @@ public class Game implements IPrintable {
 		return board.getObjectInPosition(x, y);
 	}
 	
-	public IAttack getAttackableInPosition(int x, int y) {
+	public IAttack getAttackableInPosition(int x, int y) { //no tengo ni idea de cual es la diferencia con la funcion anterior
 		return board.getObjectInPosition(x, y);
 	}
 	
