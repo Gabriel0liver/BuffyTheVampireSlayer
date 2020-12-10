@@ -2,10 +2,10 @@ package org.ucm.tp1.p2.control;
 
 import java.util.Scanner;
 
-import org.ucm.tp1.p1.control.commands.Command;
-import org.ucm.tp1.p1.control.commands.CommandGenerator;
-import org.ucm.tp1.p1.logic.Game;
-import org.ucm.tp1.p1.logic.Level;
+import org.ucm.tp1.p2.control.commands.Command;
+import org.ucm.tp1.p2.control.commands.CommandGenerator;
+import org.ucm.tp1.p2.logic.Game;
+import org.ucm.tp1.p2.logic.Level;
 
 public class Controller {
 

@@ -1,7 +1,7 @@
 package org.ucm.tp1.p2.GameObjects;
 import java.util.Random;
-import org.ucm.tp1.p1.logic.Game;
-import org.ucm.tp1.p1.logic.Level;
+import org.ucm.tp1.p2.logic.Game;
+import org.ucm.tp1.p2.logic.Level;
 
 public class Vampire extends GameObject {
 			
@@ -27,7 +27,7 @@ public class Vampire extends GameObject {
 		public static void inicializarNivel(Level level) {
 			if(Vampire.level == null) {
 				Vampire.level = level;
-				vampirosPorSalir = level.getNumV();
+				vampirosPorSalir = level.getNumberOfVampires();
 			}
 		}
 		
@@ -40,7 +40,7 @@ public class Vampire extends GameObject {
 		}
 		
 		public static boolean doesAdd(Random rand) {
-			return (rand.nextDouble() <= Vampire.level.getVampF());
+			return (rand.nextDouble() <= Vampire.level.getVampireFrequency());
 		}
 		
 	
@@ -66,7 +66,6 @@ public class Vampire extends GameObject {
 		public void attack() {
 			if(isAlive()) {
 				IAttack other = game.getAttackableInPosition(getX()-1,getY()); 
-				//no tengo ni idea que tengo que hacer con getAttackableInPosition
 				
 				if(other != null) {
 					other.receiveVampireAttack(HARM);
@@ -74,36 +73,21 @@ public class Vampire extends GameObject {
 			}
 		}
 
-		//recibir Ataque
-		default boolean receiveSlayerAttack(int damage) {
+		
+		public boolean receiveSlayerAttack(int damage) {
 			decreaseLife(damage);
 			return true;
 			}
-		default boolean receiveVampireAttack(int damage) {
 			
-			return false;
-			}
-		default boolean receiveLightFlash(){
-			return false;
-			}
-		default boolean receiveGarlicPush(){
-			return false;
-			}
-		default boolean receiveDraculaAttack(){
-			return false;
-			}
-			
-		
-
 		
 		public boolean quedanPorSalir() {
 			return(Vampire.vampirosPorSalir > 0);
 		}
 		
 
-	public int getLife() {
-		return this.life;
-	}
+		public int getLife() {
+			return this.life;
+		}
 		
 	
 }

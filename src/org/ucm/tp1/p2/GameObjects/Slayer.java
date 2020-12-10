@@ -17,40 +17,30 @@ public class Slayer extends GameObject{
 		this.game= game;
 		
 	}
-	public void move() {
-		
-	}
 	
-	public void attack() {		
-		
-		for(int i = getX() + 1; i < this.game.getDimX(); i++) {
-			
-			IAttack  other = this.game.getObjectInPosition(i, getY());
-			
-			if(other != null && other.receiveSlayerAttack(HARM)) {
-				other.decreaseLife(this.HARM);
+	public void move() {}
+	
+	public void attack() {
+		if(isAlive()) {
+			int y = getY();
+			for(int i = getX() + 1; i < this.game.getDimX(); i++) {
+				IAttack  other = this.game.getObjectInPosition(i,y);
+				if(other != null) {
+					other.receiveSlayerAttack(this.HARM);
+				}
+					
 			}
-				
 		}
-		
 		
 	}
 	
 	//Recibir ataque
-	default boolean receiveSlayerAttack(int damage) {
-		return false;
-		}
-	default boolean receiveVampireAttack(int damage) {
+	 public boolean receiveVampireAttack(int damage) {
 		decreaseLife(damage);
 		return true;
 		}
-	default boolean receiveLightFlash(){
-		return false;
-		}
-	default boolean receiveGarlicPush(){
-		return false;
-		}
-	default boolean receiveDraculaAttack(){
+	
+	public boolean receiveDraculaAttack(){
 		alive = false;
 		return true;
 		}
