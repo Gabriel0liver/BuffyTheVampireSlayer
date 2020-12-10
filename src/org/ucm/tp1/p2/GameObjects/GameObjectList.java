@@ -42,23 +42,7 @@ public class GameObjectList {
 	
 	
 	public void add (GameObject g){
-		
-		int x = g.getX();
-		int y= g.getY();
-		boolean sePuede=true;
-		
-		int i = 0;
-		
-		while(i<this.gameObjects.size()) {
-			GameObject f = gameObjects.get(i);
-			if(x== f.getX() && y== f.getY()) {
-				sePuede= false;
-			}
-			i++;
-		}
-		if(sePuede == true) {
 		this.gameObjects.add(g);
-		}
 	}
 	
 	public GameObject getObjectPosition(int x, int y) {
@@ -67,11 +51,13 @@ public class GameObjectList {
 		boolean encontrado= false;
 		
 		while(!encontrado && i<this.gameObjects.size()) {
-			 g = this.gameObjects.get(i);
-			 if(x == g.getX() && y == g.getY()) {
+			GameObject gameObject= null;
+			gameObject = this.gameObjects.get(i);
+			 if(x == gameObject.getX() && y == gameObject.getY()) {
 				 encontrado = true;
+				 g = gameObject;
 			 }
-			
+			i++;
 		}
 		
 		

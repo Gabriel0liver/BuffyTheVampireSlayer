@@ -86,10 +86,12 @@ public class Game implements IPrintable {
 		this.player.addCoins();
 		this.board.update();
 		this.addVampire(); 
+		
 		this.contadorCiclos += 1;
 		if(Vampire.VampPres() == 0 && Vampire.VampRest() == 0) {
 			setGO(true);
 		}
+		
 	}
 	
 	public GameObject getObjectInPosition(int x, int y) {

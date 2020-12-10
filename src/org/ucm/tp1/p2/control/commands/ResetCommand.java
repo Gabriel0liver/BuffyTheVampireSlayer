@@ -1,6 +1,6 @@
 package org.ucm.tp1.p2.control.commands;
 
-import org.ucm.tp1.p1.logic.Game;
+import org.ucm.tp1.p2.logic.Game;
 
 public class ResetCommand extends Command{
 	
