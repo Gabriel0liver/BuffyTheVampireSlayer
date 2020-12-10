@@ -36,20 +36,13 @@ public class Slayer extends GameObject{
 	}
 	
 	//Recibir ataque
-	default boolean receiveSlayerAttack(int damage) {
-		return false;
-		}
-	default boolean receiveVampireAttack(int damage) {
+	
+	public boolean receiveVampireAttack(int damage) {
 		decreaseLife(damage);
 		return true;
 		}
-	default boolean receiveLightFlash(){
-		return false;
-		}
-	default boolean receiveGarlicPush(){
-		return false;
-		}
-	default boolean receiveDraculaAttack(){
+	
+	public boolean receiveDraculaAttack(){
 		alive = false;
 		return true;
 		}

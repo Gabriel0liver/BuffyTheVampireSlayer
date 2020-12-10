@@ -75,26 +75,11 @@ public class Vampire extends GameObject {
 		}
 
 		//recibir Ataque
-		default boolean receiveSlayerAttack(int damage) {
+		public boolean receiveSlayerAttack(int damage) {
 			decreaseLife(damage);
 			return true;
 			}
-		default boolean receiveVampireAttack(int damage) {
-			
-			return false;
-			}
-		default boolean receiveLightFlash(){
-			return false;
-			}
-		default boolean receiveGarlicPush(){
-			return false;
-			}
-		default boolean receiveDraculaAttack(){
-			return false;
-			}
-			
 		
-
 		
 		public boolean quedanPorSalir() {
 			return(Vampire.vampirosPorSalir > 0);
