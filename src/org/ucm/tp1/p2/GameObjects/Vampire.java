@@ -1,7 +1,7 @@
 package org.ucm.tp1.p2.GameObjects;
 import java.util.Random;
-import org.ucm.tp1.p1.logic.Game;
-import org.ucm.tp1.p1.logic.Level;
+import org.ucm.tp1.p2.logic.Game;
+import org.ucm.tp1.p2.logic.Level;
 
 public class Vampire extends GameObject {
 			
@@ -21,13 +21,13 @@ public class Vampire extends GameObject {
 			this.nextStep = Vampire.SPEED;
 			Vampire.vampirosEnElTablero ++;
 			Vampire.vampirosPorSalir --;
-			//el contador de vampiros no deberia estar en la clase game o gameObjectBoard?
+			
 		}
 		
 		public static void inicializarNivel(Level level) {
 			if(Vampire.level == null) {
 				Vampire.level = level;
-				vampirosPorSalir = level.getNumV();
+				vampirosPorSalir = level.getNumberOfVampires();
 			}
 		}
 		
@@ -40,7 +40,7 @@ public class Vampire extends GameObject {
 		}
 		
 		public static boolean doesAdd(Random rand) {
-			return (rand.nextDouble() <= Vampire.level.getVampF());
+			return (rand.nextDouble() <= Vampire.level.getVampireFrequency());
 		}
 		
 	
@@ -62,11 +62,24 @@ public class Vampire extends GameObject {
 			}
 			
 		}
+		public void push(){
+			int x = getX();
+			int y = getY();
+			int limX = game.getDimX();
+			
+			if(game.getObjectInPosition(x+1, y) == null) {//el vampiro se choca con su compañero de atras, entonces no se mueve
+			x ++;
+			setX(x);
+			}
+			else if(x == limX) {//el vampiro muere 
+				kill();
+			}
+
+		}
 
 		public void attack() {
 			if(isAlive()) {
 				IAttack other = game.getAttackableInPosition(getX()-1,getY()); 
-				//no tengo ni idea que tengo que hacer con getAttackableInPosition
 				
 				if(other != null) {
 					other.receiveVampireAttack(HARM);
@@ -74,21 +87,22 @@ public class Vampire extends GameObject {
 			}
 		}
 
-		//recibir Ataque
+
 		public boolean receiveSlayerAttack(int damage) {
 			decreaseLife(damage);
 			return true;
 			}
-		
+		public boolean receiveGarlicPush(){
+			push();
+			return true;
+		};
 		
 		public boolean quedanPorSalir() {
 			return(Vampire.vampirosPorSalir > 0);
 		}
 		
 
-	public int getLife() {
-		return this.life;
-	}
+		
 		
 	
 }

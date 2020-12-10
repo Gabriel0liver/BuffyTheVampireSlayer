@@ -13,9 +13,8 @@ public abstract class GameObject implements IAttack {
 	public GameObject(int x, int y, int life, String s){
 		this.x = x;
 		this.y = y;
+		this.life = life;
 		this.symbol= s;
-		
-		
 	}
 	
 	abstract public void move();
@@ -23,6 +22,9 @@ public abstract class GameObject implements IAttack {
 	
 	public void decreaseLife(int harm) {
 		this.life= this.life - harm;
+	}
+	public void kill() {
+		life = 0;
 	}
 	
 	public boolean isAlive() {

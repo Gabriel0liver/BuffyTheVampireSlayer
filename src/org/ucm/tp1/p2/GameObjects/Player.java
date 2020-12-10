@@ -20,16 +20,25 @@ public class Player {
 	    }
 
 
-	    public boolean puedeComprar() {
-	        if(this.coins>= 50) {
+	    public boolean puedeComprar(int n) {
+	        if(this.coins>= 50 && n==1) {
 	            return true;
+	        }
+	        else if(this.coins>= 10 && n==2) {
+	        	return true;
 	        }
 	        else
 	            return false;
 	    }
 	    
-	    public void comprar() {
-	    	this.coins -= 50;
+	    
+	    public void comprar(int n) {
+	    	if (n==1) {
+	    		this.coins -= 50;
+	    	}
+	    	else if(n==2) {
+	    		this.coins -= 10;
+	    	}
 	    }
 
 	    public int mostrarCoins() {

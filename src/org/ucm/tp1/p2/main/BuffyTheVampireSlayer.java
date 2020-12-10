@@ -1,6 +1,8 @@
+package org.ucm.tp1.p2.main;
+
 import java.util.Scanner;
 
-import org.ucm.tp1.p2.GameObjects.Level;
+import org.ucm.tp1.p2.logic.Level;
 import org.ucm.tp1.p2.control.Controller;
 import org.ucm.tp1.p2.logic.Game;
 

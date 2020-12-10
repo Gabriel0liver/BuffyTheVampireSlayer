@@ -3,6 +3,8 @@ package org.ucm.tp1.p2.logic;
 import java.util.Random;
 
 import org.ucm.tp1.p2.GameObjects.Player;
+import org.ucm.tp1.p2.GameObjects.Slayer;
+import org.ucm.tp1.p2.GameObjects.Vampire;
 import org.ucm.tp1.p2.GameObjects.GameObjectBoard;
 import org.ucm.tp1.p2.GameObjects.GameObject;
 import org.ucm.tp1.p2.GameObjects.IAttack;
@@ -27,33 +29,37 @@ public class Game implements IPrintable {
 		Vampire.inicializarNivel(level);
 		this.dim_x = this.level.getDimX();
 		this.dim_y = this.level.getDimY();
-		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);//como puedo meter aquí el IPrintable
+		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);//como puedo meter aquï¿½ el IPrintable
 		this.rand = new Random(seed);
 		this.player = new Player(this.rand);
-		this.board = new GameObjectBoard(this);
+		this.board = new GameObjectBoard();
 		this.contadorCiclos = 0;
 		this.GameOver = false;
 	}
 	
 	
-	//metodos de la interfaz IPrintable. Que por cierto, no comprendo la relación IPrintable con gameprinter.
-	
-	String getPositionToString(int x, int y) {
-		GameObject g = getObjectInPosition(x,y);
 
-		return g.toString();
+	public String getPositionToString(int x, int y) {
+		GameObject g = getObjectInPosition(x,y);
+		if(g == null) {
+			return "";
+		}else {
+			return g.toString();
+		}
 	}
-	String getInfo() { //no se que hace eso
+	
+	public String getInfo() {
 		String s="";
 		return s;
 	}
 	
 	public boolean addSlayer(int x, int y) {
 		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
-			if((this.board.buscarSlayer(x, y) == null) && (this.board.buscarVampire(x, y) == null)) {
-				if(this.player.puedeComprar()) {
-					this.player.comprar();
-					this.board.addS(x, y);
+			if(this.board.isPositionEmpty(x, y)) {
+				if(this.player.puedeComprar(1)) {
+					this.player.comprar(1);
+					GameObject g = new Slayer(x,y,this,5,"S");
+					this.board.add(g);
 					return true;
 				}
 			}
@@ -64,12 +70,24 @@ public class Game implements IPrintable {
 		
 	}
 	
+	
+	public boolean garlicPush() {//si no hay ningun vampiro aun asi gastas el push.
+		if(this.player.puedeComprar(2)) {
+			this.player.comprar(2);
+			this.board.garlicPush();
+			return true;
+		}
+		return false;
+		
+	}
+	
 	public void addVampire() {
 		if((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
 			int x = this.dim_x - 1;  
 			int y = rand.nextInt(this.dim_y);
-			if(this.board.buscarVampire(x, y) == null) {
-				this.board.addV(x, y);
+			if(this.board.isPositionEmpty(x, y)) {
+				GameObject g = new Vampire(x,y,this,5,"V");
+				this.board.add(g);
 			}
 		}
 	}
@@ -79,18 +97,23 @@ public class Game implements IPrintable {
 		this.player.addCoins();
 		this.board.update();
 		this.addVampire(); 
+		
 		this.contadorCiclos += 1;
 		if(Vampire.VampPres() == 0 && Vampire.VampRest() == 0) {
 			setGO(true);
 		}
+		
 	}
 	
 	public GameObject getObjectInPosition(int x, int y) {
 		return board.getObjectInPosition(x, y);
 	}
 	
-	public IAttack getAttackableInPosition(int x, int y) { //no tengo ni idea de cual es la diferencia con la funcion anterior
-		return board.getObjectInPosition(x, y);
+	public IAttack getAttackableInPosition(int x, int y) {
+		
+		GameObject g = board.getObjectInPosition(x, y);
+		
+		return g;
 	}
 	
 	
