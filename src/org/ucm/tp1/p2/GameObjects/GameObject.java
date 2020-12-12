@@ -6,7 +6,7 @@ public abstract class GameObject implements IAttack {
 	private int x;
 	private int y;
 	
-	private int life;
+	protected int life;
 	private String symbol;
 	
 	

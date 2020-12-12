@@ -13,7 +13,7 @@ public class Vampire extends GameObject {
 		private static int vampirosEnElTablero = 0;
 		boolean alive;
 		boolean pushed;
-		private Game game;
+		protected Game game;
 		
 		public Vampire(int x, int y, Game game, int life, String s) {
 			super(x, y, life, s);
@@ -105,7 +105,8 @@ public class Vampire extends GameObject {
 		public boolean receiveSlayerAttack(int damage) {
 			decreaseLife(damage);
 			return true;
-			}
+		}
+		
 		public boolean receiveGarlicPush(){
 			push();
 			return true;
@@ -115,7 +116,10 @@ public class Vampire extends GameObject {
 			return(Vampire.vampirosPorSalir > 0);
 		}
 		
-
+		public boolean receiveExplosion() {
+			decreaseLife(1);
+			return true;
+		}
 		
 		
 	
