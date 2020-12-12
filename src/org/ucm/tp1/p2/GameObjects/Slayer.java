@@ -35,7 +35,9 @@ public class Slayer extends GameObject{
 	}
 	
 	//Recibir ataque
+
 	 public boolean receiveVampireAttack(int damage) {
+
 		decreaseLife(damage);
 		return true;
 		}

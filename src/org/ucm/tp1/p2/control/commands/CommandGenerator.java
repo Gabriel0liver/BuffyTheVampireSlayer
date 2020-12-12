@@ -6,7 +6,8 @@ public class CommandGenerator {
 			new ExitCommand("","","",""),
 			new NextCommand("","","",""),
 			new ResetCommand("","","",""),
-			new AddCommand(0,0,"","","","")
+			new AddCommand(0,0,"","","",""),
+			new GarlicPushCommand("","","","") 
 	};
 	
 	public static Command parseCommand(String[] tokens) {

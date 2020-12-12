@@ -56,8 +56,8 @@ public class Game implements IPrintable {
 	public boolean addSlayer(int x, int y) {
 		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
 			if(this.board.isPositionEmpty(x, y)) {
-				if(this.player.puedeComprar()) {
-					this.player.comprar();
+				if(this.player.puedeComprar(1)) {
+					this.player.comprar(1);
 					GameObject g = new Slayer(x,y,this,5,"S");
 					this.board.add(g);
 					return true;
@@ -67,6 +67,17 @@ public class Game implements IPrintable {
 		return false;
 		
 		
+		
+	}
+	
+	
+	public boolean garlicPush() {//si no hay ningun vampiro aun asi gastas el push.
+		if(this.player.puedeComprar(2)) {
+			this.player.comprar(2);
+			this.board.garlicPush(dim_x, dim_y);
+			return true;
+		}
+		return false;
 		
 	}
 	

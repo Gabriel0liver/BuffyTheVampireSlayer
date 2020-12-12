@@ -1,6 +1,6 @@
 package org.ucm.tp1.p2.GameObjects;
 
-import org.ucm.tp1.p2.logic.Game;
+
 public abstract class GameObject implements IAttack {
 
 	private int x;
@@ -23,6 +23,7 @@ public abstract class GameObject implements IAttack {
 	public void decreaseLife(int harm) {
 		this.life= this.life - harm;
 	}
+	
 	
 	public boolean isAlive() {
 		boolean alive = true;
