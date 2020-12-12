@@ -74,7 +74,7 @@ public class Game implements IPrintable {
 	public boolean garlicPush() {//si no hay ningun vampiro aun asi gastas el push.
 		if(this.player.puedeComprar(2)) {
 			this.player.comprar(2);
-			this.board.garlicPush();
+			this.board.garlicPush(dim_x, dim_y);
 			return true;
 		}
 		return false;

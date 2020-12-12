@@ -18,8 +18,8 @@ public class GameObjectBoard {
 		public void add(GameObject g){
 			this.gameobjects.add(g);
 		}
-		public void garlicPush() {
-			gameobjects.garlicPush();
+		public void garlicPush(int dimX,int dimY) {
+			gameobjects.garlicPush( dimX, dimY);
 		}
 		
 		public GameObject getObjectInPosition(int x,int y) {

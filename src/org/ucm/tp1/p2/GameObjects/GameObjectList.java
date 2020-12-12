@@ -2,7 +2,7 @@ package org.ucm.tp1.p2.GameObjects;
 
 import java.util.ArrayList;
 
-import org.ucm.tp1.p2.logic.Game;
+
 
 public class GameObjectList {
 	private ArrayList<GameObject> gameObjects;
@@ -32,9 +32,10 @@ public class GameObjectList {
 		for(int i=0; i<this.gameObjects.size();i++) {
 			 g = this.gameObjects.get(i);
 			if(g.isAlive()== false) {
+				
 				this.gameObjects.remove(i);
 				i--;					
-				//como has quitado un objeto del array, entonces en la misma ubicaci�n est� el obj siguiente
+				
 			}
 		}
 		
@@ -46,13 +47,19 @@ public class GameObjectList {
 		this.gameObjects.add(g);
 	}
 	
-	public void garlicPush() {
+	public void garlicPush(int dimX,int dimY) {
 		GameObject g;
-		for(int i=0; i<this.gameObjects.size();i++) {
-			 g = this.gameObjects.get(i);
+		
+		
+		for(int i=0; i-1<dimX;i++) {
+			for(int j=0; j-1<dimY;j++) {
+			 g = getObjectPosition(i,j);
+			 if(g != null) {
 			 g.receiveGarlicPush();
-			 
+			 }
+			}	 
 		}
+		
 		
 	}
 	

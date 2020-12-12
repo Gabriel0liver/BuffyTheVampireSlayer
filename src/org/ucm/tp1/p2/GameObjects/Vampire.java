@@ -12,6 +12,7 @@ public class Vampire extends GameObject {
 		private static int vampirosPorSalir;
 		private static int vampirosEnElTablero = 0;
 		boolean alive;
+		boolean pushed;
 		private Game game;
 		
 		public Vampire(int x, int y, Game game, int life, String s) {
@@ -21,7 +22,7 @@ public class Vampire extends GameObject {
 			this.nextStep = Vampire.SPEED;
 			Vampire.vampirosEnElTablero ++;
 			Vampire.vampirosPorSalir --;
-			
+			this.pushed=false;
 		}
 		
 		public static void inicializarNivel(Level level) {
@@ -34,6 +35,7 @@ public class Vampire extends GameObject {
 		public static int VampRest() {
 			return Vampire.vampirosPorSalir;
 		}
+		
 		
 		public static int VampPres() {
 			return Vampire.vampirosEnElTablero;
@@ -48,7 +50,8 @@ public class Vampire extends GameObject {
 		
 		public void move() {
 			int x = getX();
-			if(this.nextStep <= 0) {
+			int y = getY();
+			if(this.nextStep <= 0 && game.getObjectInPosition(x-1, y) == null) {
 				x --;
 				this.nextStep = Vampire.SPEED;
 				setX(x);
@@ -63,19 +66,30 @@ public class Vampire extends GameObject {
 			
 		}
 		public void push(){
+			
+			
 			int x = getX();
 			int y = getY();
 			int limX = game.getDimX();
-			
-			if(game.getObjectInPosition(x+1, y) == null) {//el vampiro se choca con su compañero de atras, entonces no se mueve
-			x ++;
-			setX(x);
+			if(pushed == false) {
+				if(game.getObjectInPosition(x+1, y) == null ) {
+					
+					if(x-1>= limX) {//el vampiro muere 
+						this.decreaseLife(100000);
+					}
+					
+					x ++;
+					setX(x);
+					nextStep = 1;
+					pushed = true;
+				}
+				
 			}
-			else if(x == limX) {//el vampiro muere 
-				kill();
-			}
+			else
+				pushed = false;
 
 		}
+		
 
 		public void attack() {
 			if(isAlive()) {
