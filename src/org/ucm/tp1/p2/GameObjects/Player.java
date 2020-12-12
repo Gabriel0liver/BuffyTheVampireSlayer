@@ -18,37 +18,23 @@ public class Player {
 	            this.coins = this.coins + 10;
 	        }
 	    }
-	    public void blank(int n) {
+	    public void bank(int n) {
 	    	n= n/10;
 	    	this.coins= this.coins+n;
 	    }
 
 
-	    public boolean puedeComprar(int n,int z) {
-	        if(this.coins>= 50 && n==1) {
+	    public boolean puedeComprar(int n) {
+	        if(this.coins>= n) {
 	            return true;
+	        }else {
+	        	return false;
 	        }
-	        else if(this.coins>= 10 && n==2) {
-	        	return true;
-	        }
-	        else if(this.coins>= z && n==2) {
-	        	return true;
-	        }
-	        else
-	            return false;
 	    }
 	    
 	    
-	    public void comprar(int n,int z) {
-	    	if (n==1) {
-	    		this.coins -= 50;
-	    	}
-	    	else if(n==2) {
-	    		this.coins -= 10;
-	    	}
-	    	else if(n==3) {
-	    		this.coins -= z;
-	    	}
+	    public void comprar(int n) {
+	    	this.coins -= n;
 	    }
 
 	    public int mostrarCoins() {

@@ -5,6 +5,8 @@ import java.util.Random;
 import org.ucm.tp1.p2.GameObjects.Player;
 import org.ucm.tp1.p2.GameObjects.Slayer;
 import org.ucm.tp1.p2.GameObjects.Bank;
+import org.ucm.tp1.p2.GameObjects.Dracula;
+import org.ucm.tp1.p2.GameObjects.ExplosiveVampire;
 import org.ucm.tp1.p2.GameObjects.Vampire;
 import org.ucm.tp1.p2.GameObjects.GameObjectBoard;
 import org.ucm.tp1.p2.GameObjects.GameObject;
@@ -50,15 +52,19 @@ public class Game implements IPrintable {
 	}
 	
 	public String getInfo() {
-		String s="";
-		return s;
+		if(this.board.isDAlive()) {
+			return "Dracula is alive";
+		}else {
+			return "";
+		}
+		
 	}
 	
 	public boolean addSlayer(int x, int y) {
 		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
 			if(this.board.isPositionEmpty(x, y)) {
-				if(this.player.puedeComprar(1,0)) {
-					this.player.comprar(1,0);
+				if(this.player.puedeComprar(50)) {
+					this.player.comprar(50);
 					GameObject g = new Slayer(x,y,this,5,"S");
 					this.board.add(g);
 					return true;
@@ -73,9 +79,9 @@ public class Game implements IPrintable {
 	public boolean addBank(int x, int y,int z) {
 		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
 			if(this.board.isPositionEmpty(x, y)) {
-				if(this.player.puedeComprar(1,z)) {
-					this.player.comprar(1,z);
-					GameObject g = new Bank(x,y,z,this,1,"B");
+				if(this.player.puedeComprar(z)) {
+					this.player.comprar(z);
+					GameObject g = new Bank(x,y,z,this,z,"B");
 					this.board.add(g);
 					return true;
 				}
@@ -83,13 +89,15 @@ public class Game implements IPrintable {
 		}
 		return false;
 	}
-	public void blank(int n) {
-		this.player.blank(n);
+	
+	public void bank(int n) {
+		this.player.bank(n);
 	}
 	
-	public boolean garlicPush() {//si no hay ningun vampiro aun asi gastas el push.
-		if(this.player.puedeComprar(2,0)) {
-			this.player.comprar(2,0);
+	
+	public boolean garlicPush() {
+		if(this.player.puedeComprar(10)) {
+			this.player.comprar(10);
 			this.board.garlicPush(dim_x, dim_y);
 			return true;
 		}
@@ -97,8 +105,8 @@ public class Game implements IPrintable {
 		
 	}
 	public boolean lightFlash() {
-		if(this.player.puedeComprar(1,0)) {
-			this.player.comprar(1,0);
+		if(this.player.puedeComprar(50)) {
+			this.player.comprar(50);
 			this.board.lightFlash();
 			return true;
 		}
@@ -111,6 +119,22 @@ public class Game implements IPrintable {
 			int y = rand.nextInt(this.dim_y);
 			if(this.board.isPositionEmpty(x, y)) {
 				GameObject g = new Vampire(x,y,this,5,"V");
+				this.board.add(g);
+			}
+		}
+		if((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
+			int x = this.dim_x - 1;  
+			int y = rand.nextInt(this.dim_y);
+			if(this.board.isPositionEmpty(x, y) && !this.board.isDAlive()) {
+				GameObject g = new Dracula(x,y,this,5,"D");
+				this.board.add(g);
+			}
+		}
+		if((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
+			int x = this.dim_x - 1;  
+			int y = rand.nextInt(this.dim_y);
+			if(this.board.isPositionEmpty(x, y)) {
+				GameObject g = new ExplosiveVampire(x,y,this,5,"EV");
 				this.board.add(g);
 			}
 		}

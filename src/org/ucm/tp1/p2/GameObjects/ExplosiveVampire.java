@@ -6,7 +6,6 @@ public class ExplosiveVampire extends Vampire{
 
 	public ExplosiveVampire(int x, int y, Game game, int life, String s) {
 		super(x, y, game, life, s);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public boolean receiveSlayerAttack(int damage) {

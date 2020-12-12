@@ -9,7 +9,8 @@ public class CommandGenerator {
 			new AddCommand(0,0,"","","",""),
 			new GarlicPushCommand("","","",""),
 			new LightFlashCommand("","","",""),
-			new AddBloodBank(0,0,0,"","","","")
+			new AddBloodBank(0,0,0,"","","",""),
+			new SuperCoinsCommand("","","","")
 	};
 	
 	public static Command parseCommand(String[] tokens) {

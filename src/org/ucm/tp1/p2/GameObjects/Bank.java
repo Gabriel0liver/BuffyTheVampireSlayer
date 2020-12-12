@@ -10,15 +10,14 @@ public class Bank extends GameObject{
 	
 	
 	public Bank(int x, int y,int z, Game game, int life, String s) {
-		super(x, y, life, s);
+		super(x, y, z, s);
 		this.z = z;
 		this.game= game;
 		
 	}
 	
 	public void move() {
-		this.game.blank(this.z);
-		
+		this.game.bank(this.z);
 	}
 	
 	public void attack() {}
@@ -26,8 +25,7 @@ public class Bank extends GameObject{
 	//Recibir ataque
 
 	 public boolean receiveVampireAttack(int damage) {
-
-		decreaseLife(damage);
+		this.kill();
 		return true;
 		}
 	

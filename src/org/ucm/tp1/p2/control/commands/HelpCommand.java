@@ -11,8 +11,9 @@ public class HelpCommand extends Command {
 			"[e]xit: exit game%n"+ 
 			"[n]one | []: update%n" +
 			"[g]arlic: push back vampires%n"+
-			"[l]ight: eliminate all vampires (but dracula survive)%n"+
-			"[B]ank <x> <y> <z>: returns 10% of your investment%n ");
+			"[l]ight: eliminate all vampires (but dracula survive)%n");
+	
+	
 	
 	public HelpCommand(String name, String shortCut, String details, String help) {
 		super(name,shortCut,details,help);
@@ -27,6 +28,7 @@ public class HelpCommand extends Command {
 		if(tokens.length == 1 && (tokens[0].equalsIgnoreCase("H") || tokens[0].equalsIgnoreCase("HELP"))){
 			Command c = new HelpCommand("help","h","Available commands",helpMsg);
 			return c;
+			
 		}else {
 			return null;
 		}

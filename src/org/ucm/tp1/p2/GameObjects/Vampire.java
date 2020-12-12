@@ -10,7 +10,7 @@ public class Vampire extends GameObject {
 		private int nextStep;
 		private static Level level = null;
 		private static int vampirosPorSalir;
-		private static int vampirosEnElTablero = 0;
+		public static int vampirosEnElTablero = 0;
 		boolean alive;
 		boolean pushed;
 		protected Game game;
