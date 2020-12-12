@@ -2,35 +2,26 @@ package org.ucm.tp1.p2.GameObjects;
 
 import org.ucm.tp1.p2.logic.Game;
 
-public class Slayer extends GameObject{
-
-	
+public class Bank extends GameObject{
+	private int z;
 	private Game game;
 	public static final int COST= 50;
 	public static final int HARM = 1;
 	
 	
-	public Slayer(int x, int y, Game game, int life, String s) {
+	public Bank(int x, int y,int z, Game game, int life, String s) {
 		super(x, y, life, s);
+		this.z = z;
 		this.game= game;
 		
 	}
 	
-	public void move() {}
-	
-	public void attack() {
-		if(isAlive()) {
-			int y = getY();
-			for(int i = getX() + 1; i < this.game.getDimX(); i++) {
-				IAttack  other = this.game.getObjectInPosition(i,y);
-				if(other != null) {
-					other.receiveSlayerAttack(this.HARM);
-				}
-					
-			}
-		}
+	public void move() {
+		this.game.blank(this.z);
 		
 	}
+	
+	public void attack() {}
 	
 	//Recibir ataque
 
@@ -44,6 +35,4 @@ public class Slayer extends GameObject{
 		this.kill();
 		return true;
 		}
-
-	
 }
