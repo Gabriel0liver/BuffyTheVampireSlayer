@@ -36,7 +36,7 @@ public class GameObjectBoard {
 		
 		
 		
-		public IAttack getAttackableInPosition(int x, int y) {//no creo que est� bien.
+		public IAttack getAttackableInPosition(int x, int y) {
 			return this.gameobjects.getObjectPosition(x, y);
 			
 		}
