@@ -41,6 +41,7 @@ public class Vampire extends GameObject {
 			return Vampire.vampirosEnElTablero;
 		}
 		
+		
 		public static boolean doesAdd(Random rand) {
 			return (rand.nextDouble() <= Vampire.level.getVampireFrequency());
 		}
@@ -65,30 +66,7 @@ public class Vampire extends GameObject {
 			}
 			
 		}
-		public void push(){
-			
-			
-			int x = getX();
-			int y = getY();
-			int limX = game.getDimX();
-			if(pushed == false) {
-				if(game.getObjectInPosition(x+1, y) == null ) {
-					
-					if(x-1>= limX) {//el vampiro muere 
-						this.decreaseLife(100000);
-					}
-					
-					x ++;
-					setX(x);
-					nextStep = 1;
-					pushed = true;
-				}
-				
-			}
-			else
-				pushed = false;
-
-		}
+		
 		
 
 		public void attack() {
@@ -106,8 +84,33 @@ public class Vampire extends GameObject {
 			decreaseLife(damage);
 			return true;
 			}
+		public boolean receiveLightFlash(){
+
+			this.kill();
+			return true;
+		};
 		public boolean receiveGarlicPush(){
-			push();
+			
+			int x = getX();
+			int y = getY();
+			int limX = game.getDimX();
+			if(pushed == false) {
+				if(game.getObjectInPosition(x+1, y) == null ) {
+					
+					if(x+1 >= limX) {//el vampiro muere 
+						this.kill();
+					}
+					x ++;
+					setX(x);
+					nextStep = 1;
+					pushed = true;
+				}
+				
+				
+			}
+			else
+				pushed = false;
+
 			return true;
 		};
 		

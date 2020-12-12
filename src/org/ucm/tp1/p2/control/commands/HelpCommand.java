@@ -9,7 +9,10 @@ public class HelpCommand extends Command {
 			"[h]elp: show this help%n" + 
 			"[r]eset: reset game%n" + 
 			"[e]xit: exit game%n"+ 
-			"[n]one | []: update%n");
+			"[n]one | []: update%n" +
+			"[g]arlic: push back vampires%n"+
+			"[l]ight: eliminate all vampires (but dracula survive)%n"+
+			"[B]ank <x> <y> <z>: returns 10% of your investment%n ");
 	
 	public HelpCommand(String name, String shortCut, String details, String help) {
 		super(name,shortCut,details,help);

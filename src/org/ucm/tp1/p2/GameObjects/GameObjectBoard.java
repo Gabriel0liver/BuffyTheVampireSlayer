@@ -21,6 +21,9 @@ public class GameObjectBoard {
 		public void garlicPush(int dimX,int dimY) {
 			gameobjects.garlicPush( dimX, dimY);
 		}
+		public void lightFlash() {
+			gameobjects.lightFlash();
+		}
 		
 		public GameObject getObjectInPosition(int x,int y) {
 			return this.gameobjects.getObjectPosition(x, y);

@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.ucm.tp1.p2.GameObjects.Player;
 import org.ucm.tp1.p2.GameObjects.Slayer;
+import org.ucm.tp1.p2.GameObjects.Bank;
 import org.ucm.tp1.p2.GameObjects.Vampire;
 import org.ucm.tp1.p2.GameObjects.GameObjectBoard;
 import org.ucm.tp1.p2.GameObjects.GameObject;
@@ -56,8 +57,8 @@ public class Game implements IPrintable {
 	public boolean addSlayer(int x, int y) {
 		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
 			if(this.board.isPositionEmpty(x, y)) {
-				if(this.player.puedeComprar(1)) {
-					this.player.comprar(1);
+				if(this.player.puedeComprar(1,0)) {
+					this.player.comprar(1,0);
 					GameObject g = new Slayer(x,y,this,5,"S");
 					this.board.add(g);
 					return true;
@@ -69,16 +70,39 @@ public class Game implements IPrintable {
 		
 		
 	}
-	
+	public boolean addBank(int x, int y,int z) {
+		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
+			if(this.board.isPositionEmpty(x, y)) {
+				if(this.player.puedeComprar(1,z)) {
+					this.player.comprar(1,z);
+					GameObject g = new Bank(x,y,z,this,1,"B");
+					this.board.add(g);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	public void blank(int n) {
+		this.player.blank(n);
+	}
 	
 	public boolean garlicPush() {//si no hay ningun vampiro aun asi gastas el push.
-		if(this.player.puedeComprar(2)) {
-			this.player.comprar(2);
+		if(this.player.puedeComprar(2,0)) {
+			this.player.comprar(2,0);
 			this.board.garlicPush(dim_x, dim_y);
 			return true;
 		}
 		return false;
 		
+	}
+	public boolean lightFlash() {
+		if(this.player.puedeComprar(1,0)) {
+			this.player.comprar(1,0);
+			this.board.lightFlash();
+			return true;
+		}
+		return false;
 	}
 	
 	public void addVampire() {

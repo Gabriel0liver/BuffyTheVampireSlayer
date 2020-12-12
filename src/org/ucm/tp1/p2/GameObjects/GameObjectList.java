@@ -63,6 +63,13 @@ public class GameObjectList {
 		
 	}
 	
+	public void lightFlash() {
+		for(int i=0; i<this.gameObjects.size();i++) {
+			GameObject g = this.gameObjects.get(i);
+			g.receiveLightFlash();
+		}
+	}
+	
 	public GameObject getObjectPosition(int x, int y) {
 		int i=0;
 		GameObject g= null;

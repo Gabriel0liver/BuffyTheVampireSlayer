@@ -7,7 +7,9 @@ public class CommandGenerator {
 			new NextCommand("","","",""),
 			new ResetCommand("","","",""),
 			new AddCommand(0,0,"","","",""),
-			new GarlicPushCommand("","","","") 
+			new GarlicPushCommand("","","",""),
+			new LightFlashCommand("","","",""),
+			new AddBloodBank(0,0,0,"","","","")
 	};
 	
 	public static Command parseCommand(String[] tokens) {
