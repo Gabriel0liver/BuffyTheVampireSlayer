@@ -19,7 +19,6 @@ public class Controller {
     private Game game;
     private Scanner in;
     
-    private boolean running;
     
     public Controller(Game game, Scanner scanner) {
     	this.game = game;
@@ -33,7 +32,7 @@ public class Controller {
     		String [] words = in.nextLine().trim().split(" +");
     		Command command = CommandGenerator.parseCommand(words);
     		if(command != null) {
-    			if(command.execute(game)) {
+    			if(command.execute(game) && !this.game.getGO()) {
     				this.game.draw();
     			}
     		}else {

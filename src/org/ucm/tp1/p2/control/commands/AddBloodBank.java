@@ -18,6 +18,7 @@ public class AddBloodBank extends Command{
 			g.update();
 			return true;
 		}else {
+			System.out.println("Invalid position");
 			return false;
 		}
 	}

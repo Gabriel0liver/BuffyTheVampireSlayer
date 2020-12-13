@@ -10,19 +10,37 @@ public class ExplosiveVampire extends Vampire{
 	
 	public boolean receiveSlayerAttack(int damage) {
 		decreaseLife(damage);
-		if(this.life < 0) {
-			IAttack up = this.game.getAttackableInPosition(getX(),getY()-1);
-			IAttack down = this.game.getAttackableInPosition(getX(),getY()+1);
-			IAttack left = this.game.getAttackableInPosition(getX()-1,getY());
-			IAttack right = this.game.getAttackableInPosition(getX()+1,getY());
-			if(up != null)up.receiveExplosion();
-			if(down != null)down.receiveExplosion();
-			if(left != null)left.receiveExplosion();
-			if(right != null)right.receiveExplosion();
-		}
+		explode();
 		return true;
 	}
 	
+	public boolean receiveExplosion() {
+		super.receiveExplosion();
+		explode();
+		return true;
+	}
+	
+	public boolean receiveLightFlash() {
+		super.receiveLightFlash();
+		explode();
+		return true;
+	}
+	
+	private void explode() {
+		if(this.life <= 0) {
+			int x = getX();
+			int y = getY();
+			for(int i = x-1; i<=x+1; i++) {
+				for(int z = y-1; z<=y+1; z++) {
+					if(!(i == x && z == y)) {
+						IAttack g = this.game.getAttackableInPosition(i,z);
+						if(g != null)g.receiveExplosion();
+					}
+					
+				}
+			}
+		}
+	}
 
 
 }

@@ -26,10 +26,9 @@ public class Vampire extends GameObject {
 		}
 		
 		public static void inicializarNivel(Level level) {
-			if(Vampire.level == null) {
-				Vampire.level = level;
-				vampirosPorSalir = level.getNumberOfVampires();
-			}
+			Vampire.level = level;
+			vampirosPorSalir = level.getNumberOfVampires();
+			vampirosEnElTablero = 0;
 		}
 		
 		public static int VampRest() {
@@ -58,6 +57,7 @@ public class Vampire extends GameObject {
 				setX(x);
 				
 				if(x < 0) {
+					System.out.println("Vampires win");
 					this.game.setGO(true);
 				}
 			}
@@ -99,7 +99,7 @@ public class Vampire extends GameObject {
 			if(pushed == false) {
 				if(game.getObjectInPosition(x+1, y) == null ) {
 					
-					if(x+1 >= limX) {//el vampiro muere 
+					if(x+1 >= limX) {
 						this.kill();
 					}
 					x ++;

@@ -11,7 +11,8 @@ public class HelpCommand extends Command {
 			"[e]xit: exit game%n"+ 
 			"[n]one | []: update%n" +
 			"[g]arlic: push back vampires%n"+
-			"[l]ight: eliminate all vampires (but dracula survive)%n");
+			"[l]ight: eliminate all vampires (but dracula survive)%n"+
+			"[v]ampire <type> <x> <y>: add a vampire in x, y");
 	
 	
 	

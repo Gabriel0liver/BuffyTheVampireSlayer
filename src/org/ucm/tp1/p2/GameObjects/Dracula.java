@@ -24,6 +24,10 @@ public class Dracula extends Vampire {
 		return Dracula.isAlive;
 	}
 	
+	public static void resetDracula() {
+		Dracula.isAlive = false;
+	}
+	
 	public boolean receiveSlayerAttack(int harm){
 		super.receiveSlayerAttack(harm);
 		if (!isAlive()) Dracula.isAlive=false;
@@ -39,4 +43,11 @@ public class Dracula extends Vampire {
 		if (!isAlive()) Dracula.isAlive=false;
 		return true;
 	}
+	
+	public boolean receiveExplosion() {
+		super.receiveExplosion();
+		if (!isAlive()) Dracula.isAlive=false;
+		return true;
+	}
+	
 }
