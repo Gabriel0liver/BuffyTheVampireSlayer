@@ -65,7 +65,7 @@ public class Game implements IPrintable {
 			if(this.board.isPositionEmpty(x, y)) {
 				if(this.player.puedeComprar(50)) {
 					this.player.comprar(50);
-					GameObject g = new Slayer(x,y,this,5,"S");
+					GameObject g = new Slayer(x,y,this,3,"S");
 					this.board.add(g);
 					return true;
 				}else {
@@ -161,9 +161,13 @@ public class Game implements IPrintable {
 					this.board.add(v);
 					return true;
 				case "d":
-					GameObject d = new Dracula(x,y,this,5,"D");
-					this.board.add(d);
-					return true;
+					if(!this.board.isDAlive()) {
+						GameObject d = new Dracula(x,y,this,5,"D");
+						this.board.add(d);
+						return true;
+					}else {
+						break;
+					}
 				case "ev":
 					GameObject ev = new ExplosiveVampire(x,y,this,5,"EV");
 					this.board.add(ev);

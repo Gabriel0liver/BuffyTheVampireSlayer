@@ -6,7 +6,7 @@ public class AddVampireCommand extends Command {
 	
 	private int x;
 	private int y;
-	private static String[] types = {"v","d","ev"};
+	private static String[] types = {"v","d","e"};
 
 	public AddVampireCommand(int x, int y, String name, String shortCut, String details, String help) {
 		super(name, shortCut, details, help);
