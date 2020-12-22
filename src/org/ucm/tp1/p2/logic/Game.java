@@ -57,8 +57,8 @@ public class Game implements IPrintable {
 	public boolean addSlayer(int x, int y) {
 		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
 			if(this.board.isPositionEmpty(x, y)) {
-				if(this.player.puedeComprar(1,0)) {
-					this.player.comprar(1,0);
+				if(this.player.puedeComprar(50)) {
+					this.player.comprar(50);
 					GameObject g = new Slayer(x,y,this,5,"S");
 					this.board.add(g);
 					return true;
@@ -67,14 +67,12 @@ public class Game implements IPrintable {
 		}
 		return false;
 		
-		
-		
 	}
 	public boolean addBank(int x, int y,int z) {
 		if((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
 			if(this.board.isPositionEmpty(x, y)) {
-				if(this.player.puedeComprar(1,z)) {
-					this.player.comprar(1,z);
+				if(this.player.puedeComprar(z)) {
+					this.player.comprar(z);
 					GameObject g = new Bank(x,y,z,this,1,"B");
 					this.board.add(g);
 					return true;
@@ -83,13 +81,19 @@ public class Game implements IPrintable {
 		}
 		return false;
 	}
-	public void blank(int n) {
-		this.player.blank(n);
+	public void bank(int n) {
+		n= n/10;
+		this.player.addCoins(n);
 	}
 	
+	public boolean coins() {
+		player.addCoins(1000);
+		return true;
+	}
+
 	public boolean garlicPush() {//si no hay ningun vampiro aun asi gastas el push.
-		if(this.player.puedeComprar(2,0)) {
-			this.player.comprar(2,0);
+		if(this.player.puedeComprar(10)) {
+			this.player.comprar(10);
 			this.board.garlicPush(dim_x, dim_y);
 			return true;
 		}
@@ -97,8 +101,8 @@ public class Game implements IPrintable {
 		
 	}
 	public boolean lightFlash() {
-		if(this.player.puedeComprar(1,0)) {
-			this.player.comprar(1,0);
+		if(this.player.puedeComprar(50)) {
+			this.player.comprar(50);
 			this.board.lightFlash();
 			return true;
 		}
@@ -114,6 +118,16 @@ public class Game implements IPrintable {
 				this.board.add(g);
 			}
 		}
+	}
+	public boolean addV(int x,int y) {
+		if((x < (dim_x) && x >= 0) && (y < dim_y && y >= 0)) {
+			if(this.board.isPositionEmpty(x, y)) {
+				GameObject g = new Vampire(x,y,this,5,"V");
+				this.board.add(g);
+				return true;	
+			}
+		}
+		return false;
 	}
 	
 	
