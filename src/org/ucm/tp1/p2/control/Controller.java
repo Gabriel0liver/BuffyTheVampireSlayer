@@ -29,9 +29,12 @@ public class Controller {
     	this.game.draw();
     	while(!this.game.getGO()) {
     		System.out.print(prompt);
-    		String [] words = in.nextLine().trim().split(" +");
+    		String word = in.nextLine();
+    		System.out.println("[DEBUG] Executing: " + word);
+    		String [] words = word.trim().split(" +");
     		Command command = CommandGenerator.parseCommand(words);
     		if(command != null) {
+    			
     			if(command.execute(game) && !this.game.getGO()) {
     				this.game.draw();
     			}

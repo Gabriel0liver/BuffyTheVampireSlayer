@@ -46,6 +46,5 @@ public class AddVampireCommand extends Command {
 		}
 		
 	}
-	
-	
+
 }

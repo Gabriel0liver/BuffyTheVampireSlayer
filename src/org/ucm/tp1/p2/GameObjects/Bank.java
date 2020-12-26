@@ -17,7 +17,7 @@ public class Bank extends GameObject{
 	}
 	
 	public void move() {
-		this.game.bank(this.z);
+		this.game.bank(this.z/10);
 	}
 	
 	public void attack() {}

@@ -18,8 +18,9 @@ public class Player {
 	            this.coins = this.coins + 10;
 	        }
 	    }
+	    
 	    public void bank(int n) {
-	    	n= n/10;
+	    	//ahora divide enrtre 10 en la clase de blood bank
 	    	this.coins= this.coins+n;
 	    }
 
