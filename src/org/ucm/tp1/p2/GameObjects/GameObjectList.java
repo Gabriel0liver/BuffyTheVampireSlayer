@@ -32,7 +32,7 @@ public class GameObjectList {
 		for(int i=0; i<this.gameObjects.size();i++) {
 			 g = this.gameObjects.get(i);
 			if(g.isAlive()== false) {
-				
+				Vampire.vampirosEnElTablero --;
 				this.gameObjects.remove(i);
 				i--;					
 				
@@ -103,7 +103,9 @@ public class GameObjectList {
 		return empty;
 	}
 	
-	
+	public boolean isDAlive() {
+		return Dracula.isDAlive();
+	}
 	
 	public int getSize() {
 		return this.gameObjects.size();

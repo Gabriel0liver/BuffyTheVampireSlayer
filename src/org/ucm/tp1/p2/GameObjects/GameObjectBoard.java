@@ -18,6 +18,7 @@ public class GameObjectBoard {
 		public void add(GameObject g){
 			this.gameobjects.add(g);
 		}
+		
 		public void garlicPush(int dimX,int dimY) {
 			gameobjects.garlicPush( dimX, dimY);
 		}
@@ -46,6 +47,9 @@ public class GameObjectBoard {
 			return this.gameobjects.getObjectPosition(x, y);
 			
 		}
-			
+		
+		public boolean isDAlive() {
+			return gameobjects.isDAlive();
+		}
 		
 }

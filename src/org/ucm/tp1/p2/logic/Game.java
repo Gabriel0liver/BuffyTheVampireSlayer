@@ -5,6 +5,8 @@ import java.util.Random;
 import org.ucm.tp1.p2.GameObjects.Player;
 import org.ucm.tp1.p2.GameObjects.Slayer;
 import org.ucm.tp1.p2.GameObjects.Bank;
+import org.ucm.tp1.p2.GameObjects.Dracula;
+import org.ucm.tp1.p2.GameObjects.ExplosiveVampire;
 import org.ucm.tp1.p2.GameObjects.Vampire;
 import org.ucm.tp1.p2.GameObjects.GameObjectBoard;
 import org.ucm.tp1.p2.GameObjects.GameObject;
@@ -30,7 +32,7 @@ public class Game implements IPrintable {
 		Vampire.inicializarNivel(level);
 		this.dim_x = this.level.getDimX();
 		this.dim_y = this.level.getDimY();
-		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);//como puedo meter aqu� el IPrintable
+		this.printer = new GamePrinter(this, this.dim_x, this.dim_y);
 		this.rand = new Random(seed);
 		this.player = new Player(this.rand);
 		this.board = new GameObjectBoard();
@@ -50,8 +52,12 @@ public class Game implements IPrintable {
 	}
 	
 	public String getInfo() {
-		String s="";
-		return s;
+		if(this.board.isDAlive()) {
+			return "Dracula is alive";
+		}else {
+			return "";
+		}
+		
 	}
 	
 	public boolean addSlayer(int x, int y) {
@@ -59,10 +65,16 @@ public class Game implements IPrintable {
 			if(this.board.isPositionEmpty(x, y)) {
 				if(this.player.puedeComprar(50)) {
 					this.player.comprar(50);
-					GameObject g = new Slayer(x,y,this,5,"S");
+
+					GameObject g = new Slayer(x,y,this,3,"S");
+
 					this.board.add(g);
 					return true;
+				}else {
+					System.out.println("Not enough coins");
 				}
+			}else {
+				System.out.println("Invalid position");
 			}
 		}
 		return false;
@@ -73,14 +85,21 @@ public class Game implements IPrintable {
 			if(this.board.isPositionEmpty(x, y)) {
 				if(this.player.puedeComprar(z)) {
 					this.player.comprar(z);
+
 					GameObject g = new Bank(x,y,z,this,1,"B");
+
 					this.board.add(g);
 					return true;
+				}else {
+					System.out.println("Not enough coins");
 				}
+			}else {
+				System.out.println("Invalid position");
 			}
 		}
 		return false;
 	}
+
 	public void bank(int n) {
 		n= n/10;
 		this.player.addCoins(n);
@@ -92,10 +111,13 @@ public class Game implements IPrintable {
 	}
 
 	public boolean garlicPush() {//si no hay ningun vampiro aun asi gastas el push.
+
 		if(this.player.puedeComprar(10)) {
 			this.player.comprar(10);
 			this.board.garlicPush(dim_x, dim_y);
 			return true;
+		}else {
+			System.out.println("Not enough coins");
 		}
 		return false;
 		
@@ -105,6 +127,8 @@ public class Game implements IPrintable {
 			this.player.comprar(50);
 			this.board.lightFlash();
 			return true;
+		}else {
+			System.out.println("Not enough coins");
 		}
 		return false;
 	}
@@ -118,6 +142,48 @@ public class Game implements IPrintable {
 				this.board.add(g);
 			}
 		}
+		if((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
+			int x = this.dim_x - 1;  
+			int y = rand.nextInt(this.dim_y);
+			if(this.board.isPositionEmpty(x, y) && !this.board.isDAlive()) {
+				GameObject g = new Dracula(x,y,this,5,"D");
+				this.board.add(g);
+			}
+		}
+		if((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
+			int x = this.dim_x - 1;  
+			int y = rand.nextInt(this.dim_y);
+			if(this.board.isPositionEmpty(x, y)) {
+				GameObject g = new ExplosiveVampire(x,y,this,5,"EV");
+				this.board.add(g);
+			}
+		}
+	}
+	
+	public boolean addCustomVampire(int x, int y, String type) {
+		if((x < (dim_x) && x >= 0) && (y < dim_y && y >= 0)) {
+			if(this.board.isPositionEmpty(x, y)) {
+				switch(type) {
+				case "v":
+					GameObject v = new Vampire(x,y,this,5,"V");
+					this.board.add(v);
+					return true;
+				case "d":
+					if(!this.board.isDAlive()) {
+						GameObject d = new Dracula(x,y,this,5,"D");
+						this.board.add(d);
+						return true;
+					}else {
+						break;
+					}
+				case "ev":
+					GameObject ev = new ExplosiveVampire(x,y,this,5,"EV");
+					this.board.add(ev);
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	public boolean addV(int x,int y) {
 		if((x < (dim_x) && x >= 0) && (y < dim_y && y >= 0)) {
@@ -138,6 +204,7 @@ public class Game implements IPrintable {
 		
 		this.contadorCiclos += 1;
 		if(Vampire.VampPres() == 0 && Vampire.VampRest() == 0) {
+			System.out.println("Player wins");
 			setGO(true);
 		}
 		
@@ -148,9 +215,7 @@ public class Game implements IPrintable {
 	}
 	
 	public IAttack getAttackableInPosition(int x, int y) {
-		
 		GameObject g = board.getObjectInPosition(x, y);
-		
 		return g;
 	}
 	
@@ -178,4 +243,13 @@ public class Game implements IPrintable {
 		return this.dim_y;
 	}
 	
+	public void resetGame() {
+		Vampire.inicializarNivel(level);
+		this.rand = new Random(seed);
+		this.player = new Player(this.rand);
+		this.board = new GameObjectBoard();
+		this.contadorCiclos = 0;
+		this.GameOver = false;
+		Dracula.resetDracula();
+	}
 }

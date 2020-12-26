@@ -26,7 +26,11 @@ public abstract class Command {
 		return this.shortCut.equalsIgnoreCase(name) ||this.name.equalsIgnoreCase(name);
 	}
 	
+	
 	public String helpText(){
 		return details +" : "+ help +"\n";
+	}
+	public void incorrectArg(){
+		System.out.println(incorrectArgsMsg);
 	}
 }

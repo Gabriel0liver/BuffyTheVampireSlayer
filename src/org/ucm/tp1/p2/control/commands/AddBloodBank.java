@@ -18,12 +18,13 @@ public class AddBloodBank extends Command{
 			g.update();
 			return true;
 		}else {
+			System.out.println("Invalid position");
 			return false;
 		}
 	}
 	
 	public Command parse(String tokens[]) {
-		if(tokens.length == 1 && (tokens[0].equalsIgnoreCase("B") || tokens[0].equalsIgnoreCase("BANK"))){
+		if(tokens.length == 4 && (tokens[0].equalsIgnoreCase("B") || tokens[0].equalsIgnoreCase("BANK"))){
 			int x = Integer.parseInt(tokens[1]);
 			int y = Integer.parseInt(tokens[2]);
 			int z = Integer.parseInt(tokens[3]);

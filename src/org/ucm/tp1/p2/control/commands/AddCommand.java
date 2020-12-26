@@ -18,9 +18,8 @@ public class AddCommand extends Command{
 		if(g.addSlayer(this.x, this.y)){
 			g.update();
 			return true;
-		}else {
-			return false;
 		}
+		return false;
 	}
 	
 	public Command parse(String tokens[]) {
