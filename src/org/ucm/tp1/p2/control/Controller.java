@@ -24,20 +24,26 @@ public class Controller {
 	}
 
 	public void run() {
-		this.game.draw();
-		while (!this.game.getGO()) {
-			System.out.print(prompt);
-			String[] words = in.nextLine().trim().split(" +");
-			Command command = CommandGenerator.parseCommand(words);
-			if (command != null) {
-				if (command.execute(game) && !this.game.getGO()) {
-					this.game.draw();
-				}
-			} else {
-				System.out.println(invalidCommandMsg);
-			}
-		}
-		System.out.println("Game Over");
-	}
+    	this.game.draw();
+    	
+    	while(!this.game.getGO()) {
+    		System.out.print(prompt);
+    		String word = in.nextLine();
+    		System.out.println("[DEBUG] Executing: " + word);
+    		String [] words = word.trim().split(" +");
+    		try {
+    			Command command = CommandGenerator.parse(words);
+    			if (command != null)
+    			Command refreshDisplay = command.execute(game);
+    			else 
+    				System.out.println(“[ERROR]: “ + unknownCommandMsg);
+
+    		}
+    		catch(GameException ex) {
+    			System.out.format(ex.getMessage() +  ...);
+    			}
+    	}
+    	System.out.println("Game Over");
+    }
 
 }

@@ -12,14 +12,9 @@ public class HelpCommand extends Command {
 			"[n]one | []: update%n" +
 			"[g]arlic: push back vampires%n"+
 			"[l]ight: eliminate all vampires (but dracula survive)%n"+
-<<<<<<< HEAD
-			"[B]ank <x> <y> <z>: returns 10% of your investment%n "+
-			"[v]ampire <x> <y>: add a sayer in position x, y%n");
-=======
 			"[v]ampire <type> <x> <y>: add a vampire in x, y");
 	
 	
->>>>>>> 4cfed7462539d150bc29440279b9920904a0b437
 	
 	public HelpCommand(String name, String shortCut, String details, String help) {
 		super(name,shortCut,details,help);
