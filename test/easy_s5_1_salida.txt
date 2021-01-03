@@ -258,22 +258,22 @@ Dracula is alive
 Command >[DEBUG] Executing: 
 Number of cycles: 16
 Coins: 130
-Remaining vampires: 0
-Vampires on the board: 3
+Remaining vampires: 1
+Vampires on the board: 2
 Dracula is alive
    --------------------------------------------------------------- 
   |       |       |       |       |       |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       |       |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
-  |       |       |       |       | EV[5] |       |       | EV[5] |
+  |       |       |       |       | EV[5] |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       |       |       | D[5]  |       |
    --------------------------------------------------------------- 
 
 Command >[DEBUG] Executing: 
 Number of cycles: 17
-Coins: 130
+Coins: 140
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive
@@ -289,7 +289,7 @@ Dracula is alive
 
 Command >[DEBUG] Executing: 
 Number of cycles: 18
-Coins: 130
+Coins: 150
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive
@@ -298,14 +298,14 @@ Dracula is alive
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       |       |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
-  |       |       |       | EV[5] |       |       | EV[5] |       |
+  |       |       |       | EV[5] |       |       |       | EV[5] |
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       |       | D[5]  |       |       |
    --------------------------------------------------------------- 
 
 Command >[DEBUG] Executing: 
 Number of cycles: 19
-Coins: 130
+Coins: 150
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive
@@ -321,7 +321,7 @@ Dracula is alive
 
 Command >[DEBUG] Executing: 
 Number of cycles: 20
-Coins: 140
+Coins: 150
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive
@@ -330,14 +330,14 @@ Dracula is alive
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       |       |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
-  |       |       | EV[5] |       |       | EV[5] |       |       |
+  |       |       | EV[5] |       |       |       | EV[5] |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       | D[5]  |       |       |       |
    --------------------------------------------------------------- 
 
 Command >[DEBUG] Executing: 
 Number of cycles: 21
-Coins: 140
+Coins: 150
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive
@@ -353,7 +353,7 @@ Dracula is alive
 
 Command >[DEBUG] Executing: 
 Number of cycles: 22
-Coins: 140
+Coins: 160
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive
@@ -362,14 +362,14 @@ Dracula is alive
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       |       |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
-  |       | EV[5] |       |       | EV[5] |       |       |       |
+  |       | EV[5] |       |       |       | EV[5] |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       | D[5]  |       |       |       |       |
    --------------------------------------------------------------- 
 
 Command >[DEBUG] Executing: 
 Number of cycles: 23
-Coins: 150
+Coins: 160
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive
@@ -394,14 +394,14 @@ Dracula is alive
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       |       |       |       |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
-  | EV[5] |       |       | EV[5] |       |       |       |       |
+  | EV[5] |       |       |       | EV[5] |       |       |       |
    ------- ------- ------- ------- ------- ------- ------- ------- 
   |       |       | D[5]  |       |       |       |       |       |
    --------------------------------------------------------------- 
 
 Command >[DEBUG] Executing: 
 Number of cycles: 25
-Coins: 160
+Coins: 170
 Remaining vampires: 0
 Vampires on the board: 3
 Dracula is alive

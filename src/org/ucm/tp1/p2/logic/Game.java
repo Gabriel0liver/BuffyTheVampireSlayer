@@ -131,14 +131,17 @@ public class Game implements IPrintable {
 				this.board.add(g);
 			}
 		}
-		if ((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
-			int x = this.dim_x - 1;
-			int y = rand.nextInt(this.dim_y);
-			if (this.board.isPositionEmpty(x, y) && !this.board.isDAlive()) {
-				GameObject g = new Dracula(x, y, this, 5, "D");
-				this.board.add(g);
+		if(!this.board.isDAlive()) {
+			if ((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
+				int x = this.dim_x - 1;
+				int y = rand.nextInt(this.dim_y);
+				if (this.board.isPositionEmpty(x, y)) {
+					GameObject g = new Dracula(x, y, this, 5, "D");
+					this.board.add(g);
+				}
 			}
 		}
+		
 		if ((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
 			int x = this.dim_x - 1;
 			int y = rand.nextInt(this.dim_y);

@@ -1,0 +1,9 @@
+	
+En algunos test cases los resultados son los mismos,
+hasta que a partir de un cierto ciclo la aparición
+de vampiros se diferencia de los resultados estimados.
+
+Hemos revisado varias veces el código de la generación
+de vampiros, comparándolo meticulosamente con las instrucciones
+proporcionadas. No hemos llegado a encontrar el fallo por el
+cual el random no es el mismo.

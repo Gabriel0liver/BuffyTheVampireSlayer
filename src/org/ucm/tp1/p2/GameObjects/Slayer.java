@@ -21,15 +21,16 @@ public class Slayer extends GameObject{
 	public void attack() {
 		if(isAlive()) {
 			int y = getY();
-			for(int i = getX() + 1; i < this.game.getDimX(); i++) {
-				IAttack  other = this.game.getObjectInPosition(i,y);
+			int x = getX() + 1;
+			IAttack  other = null;
+			while(x < this.game.getDimX() && other == null) {
+				other = this.game.getObjectInPosition(x,y);
 				if(other != null) {
 					other.receiveSlayerAttack(this.HARM);
 				}
-					
-			}
+				x++;
+			}	
 		}
-		
 	}
 	
 	//Recibir ataque

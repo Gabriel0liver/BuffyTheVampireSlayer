@@ -1,0 +1,9 @@
+
+-Eliminado la llamada a explode() dentro de explosive vampire cuando muere por light flash.
+
+-Corregido el comando de supercoins que añadía 100 en vez de los 1000 que tocan.
+
+-Eliminado el método de recieveExplosion() que se podía sustituir por recieveSlayerAttack(1).
+
+-Añadido booleano exploded al EV para prevenir que dos EV entren en un bucle en el cual se exploten mutuamente infinitamente, lo cual cuasaba antes un stack overflow.
+
