@@ -1,6 +1,8 @@
 package org.ucm.tp1.p2.control.commands;
 
 import org.ucm.tp1.p2.logic.Game;
+import org.ucm.tp1.p3.exception.CommandExecuteException;
+import org.ucm.tp1.p3.exception.CommandParseException;
 
 public abstract class Command {
 	protected final String name;
@@ -25,6 +27,13 @@ public abstract class Command {
 	protected boolean matchCommandName(String name) {
 		return this.shortCut.equalsIgnoreCase(name) ||this.name.equalsIgnoreCase(name);
 	}
+	protected Command parseNoParamsCommand(String[] words) throws CommandParseException {
+			if (matchCommandName(words[0])) {
+				if (words.length != 1)throw new CommandParseException("[ERROR]: Command "+ name+ " :"+incorrectNumArgsMsg);
+			else return this;
+			}
+			return null;
+			}
 	
 	
 	public String helpText(){

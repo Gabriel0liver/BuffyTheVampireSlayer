@@ -1,5 +1,7 @@
 package org.ucm.tp1.p2.control.commands;
 
+import org.ucm.tp1.p3.exception.CommandParseException;
+
 public class CommandGenerator {
 	private static Command[] availableCommands= {
 			new HelpCommand("","","",""),
@@ -21,12 +23,14 @@ public class CommandGenerator {
 			cm = c.parse(tokens);
 			if (cm!=null) break;
 		}
-		if(cm == null) throw new CommandParseException(“[ERROR]: ” + unknownCommandMsg);
-		
+		if(cm == null) 
+			throw new CommandParseException("[ERROR]: " + "Uknown Command");
+		return cm;
 		}
 		finally {
-			return cm;
+			
 		}
+		
 		
 	}
 }

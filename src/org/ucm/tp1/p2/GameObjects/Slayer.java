@@ -22,17 +22,20 @@ public class Slayer extends GameObject{
 		if(isAlive()) {
 			boolean disparado = false;
 			int y = getY();
+
 			int i = getX() + 1;
 			while( i < this.game.getDimX() && !disparado) {
 				IAttack  other = this.game.getObjectInPosition(i,y);
+
 				if(other != null) {
 					other.receiveSlayerAttack(this.HARM);
 					disparado = true;
 				}
+
 				 i++;					
 			}
+
 		}
-		
 	}
 	
 	//Recibir ataque
