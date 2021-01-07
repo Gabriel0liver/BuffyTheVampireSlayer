@@ -41,13 +41,11 @@ public class Controller {
     		try {
     			Command command = CommandGenerator.parse(words);
     			 refreshDisplay = command.execute(game);
-    			 if (!refreshDisplay) {
-    				 System.out.println("es false");
-    			 }
+    			
     		}
-    		
     		catch(GameException ex) {
-    			System.out.format(ex.getMessage() +  "%n%n");
+    			System.out.format(ex.getMessage()+ "%n%n");
+    			
     			}
     	}
     	System.out.println("Game Over");

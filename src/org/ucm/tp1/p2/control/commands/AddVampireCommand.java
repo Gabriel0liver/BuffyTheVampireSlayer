@@ -41,8 +41,6 @@ public class AddVampireCommand extends Command {
 					if(tokens[1].equalsIgnoreCase(type)) {
 						int x,y;
 						try {
-							if(Integer.parseInt(tokens[1]) %2 !=0 || Integer.parseInt(tokens[2])%2 !=0)
-								throw new NumberFormatException("there are decimals in the commands");
 						 x = Integer.parseInt(tokens[2]);
 						 y = Integer.parseInt(tokens[3]);
 						c = new AddVampireCommand(x,y,"vampire",type,"details","help");
@@ -66,7 +64,7 @@ public class AddVampireCommand extends Command {
 					y = Integer.parseInt(tokens[2]);
 				}
 				catch(NumberFormatException exception) {
-					throw new CommandParseException("[ERROR]: " + exception.getMessage());
+					throw new CommandParseException("[ERROR]: " + "You can't put decimals");
 				}
 				c = new AddVampireCommand(x,y,"vampire","v","details","help");
 			}

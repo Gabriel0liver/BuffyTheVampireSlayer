@@ -27,12 +27,10 @@ public class LightFlashCommand extends Command{
 		
 		Command c = null;
 		if (tokens[0].equalsIgnoreCase("L") || tokens[0].equalsIgnoreCase("LIGHT")) {
-			if (tokens.length == 1) {
-				c = new LightFlashCommand("light","l","details","help");
-
-			} else {
+			if (tokens.length != 1)
 				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
-			}
+				
+			c = new LightFlashCommand("light","l","details","help");
 		}
 		return c;
 	}
