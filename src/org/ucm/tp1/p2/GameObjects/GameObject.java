@@ -5,7 +5,7 @@ public abstract class GameObject implements IAttack {
 
 	private int x;
 	private int y;
-	
+	protected int nextStep;
 	protected int life;
 	private String symbol;
 	
@@ -56,6 +56,10 @@ public abstract class GameObject implements IAttack {
 		String s= this.symbol+"["+this.life+"]";
 		return s;
 	}
+
+	public String serialize() {
+		return this.symbol+";"+this.x+";"+this.y+";"+this.life+System.getProperty("line.separator");
+	}
  
- 
+	
  }

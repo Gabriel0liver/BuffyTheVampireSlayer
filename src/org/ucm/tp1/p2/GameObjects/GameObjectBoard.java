@@ -49,5 +49,9 @@ public class GameObjectBoard {
 	public boolean isDAlive() {
 		return gameobjects.isDAlive();
 	}
+	
+	public String serialize() {
+		return gameobjects.serialize();
+	}
 
 }

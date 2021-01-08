@@ -13,7 +13,9 @@ public class CommandGenerator {
 			new LightFlashCommand("","","",""),
 			new AddBloodBank(0,0,0,"","","",""),
 			new SuperCoinsCommand("","","",""),
-			new AddVampireCommand(0,0,"","","","")
+			new AddVampireCommand(0,0,"","","",""),
+			new SerializeCommand("","","",""),
+			new SaveCommand("","","","",""),
 	};
 	
 	public static Command parse(String[] tokens) throws CommandParseException{

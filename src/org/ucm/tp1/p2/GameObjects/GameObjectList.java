@@ -110,6 +110,16 @@ public class GameObjectList {
 	public int getSize() {
 		return this.gameObjects.size();
 	}
+
+
+	public String serialize() {
+		String ans = "";
+		for(int i=0; i<this.gameObjects.size();i++) {
+			GameObject g = this.gameObjects.get(i);
+			ans += g.serialize();
+		}
+		return ans;
+	}
 	
 	
 	
