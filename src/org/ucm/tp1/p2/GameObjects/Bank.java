@@ -3,21 +3,20 @@ package org.ucm.tp1.p2.GameObjects;
 import org.ucm.tp1.p2.logic.Game;
 
 public class Bank extends GameObject{
-	private int z;
 	private Game game;
 	public static final int COST= 50;
 	public static final int HARM = 1;
 	
 	
-	public Bank(int x, int y,int z, Game game, int life, String s) {
-		super(x, y, z, s);
-		this.z = z;
+	public Bank(int x, int y,int life, Game game, int z, String s) {
+		super(x, y, life, s);
+		this.nextStep = z;
 		this.game= game;
 		
 	}
 	
 	public void move() {
-		this.game.bank(this.z/10);
+		this.game.bank(this.nextStep/10);
 	}
 	
 	public void attack() {}

@@ -85,7 +85,7 @@ public class Game implements IPrintable {
 			throw new NotEnoughCoinsException(" Bank cost is" + z + ": Not enough coins");
 
 		this.player.comprar(z);
-		GameObject g = new Bank(x, y, z, this, z, "B");
+		GameObject g = new Bank(x, y, 1, this, z, "B");
 		this.board.add(g);
 	}
 

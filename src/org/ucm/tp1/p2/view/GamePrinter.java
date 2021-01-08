@@ -7,7 +7,6 @@ public class GamePrinter {
 	IPrintable printable;
 	int numRows; 
 	int numCols;
-	String[][] board;
 	final String space = " ";
 	
 	public GamePrinter (IPrintable printable, int cols, int rows) {
