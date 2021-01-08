@@ -1,6 +1,7 @@
 package org.ucm.tp1.p2.control.commands;
 
 import org.ucm.tp1.p2.logic.Game;
+import org.ucm.tp1.p3.exception.CommandParseException;
 
 public class NextCommand extends Command{
 	
@@ -13,8 +14,10 @@ public class NextCommand extends Command{
 		return true;
 	}
 	
-	public Command parse(String tokens[]) {
-		if(tokens.length == 1 && (tokens[0].equalsIgnoreCase("") || tokens[0].equalsIgnoreCase("N") || tokens[0].equalsIgnoreCase("NONE"))){
+	public Command parse(String tokens[]) throws CommandParseException{
+		if( (tokens[0].equalsIgnoreCase("") || tokens[0].equalsIgnoreCase("N") || tokens[0].equalsIgnoreCase("NONE"))){
+			if(tokens.length != 1)
+				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
 			return this;
 		}else {
 			return null;

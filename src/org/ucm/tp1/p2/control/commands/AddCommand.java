@@ -30,19 +30,7 @@ public class AddCommand extends Command {
 		
 		
 	}
-	/*
-	 if (tokens.length!=3) return null;
-		if (!tokens[0].equalsIgnoreCase("ADD") && !tokens[0].equalsIgnoreCase("A")) return null;
-		Command c = null;
-		try {
-			int x = Integer.parseInt(tokens[1]);
-			int y = Integer.parseInt(tokens[2]);
-			c = new AddCommand(x,y,"add","shortCut","details","help");
-		}catch(Exception exception) {
-			System.out.println("Wronginput!");
-		}
-		return c;
-	  */
+	
 
 	public Command parse(String[] tokens) throws CommandParseException {
 		Command command = null;
@@ -54,15 +42,14 @@ public class AddCommand extends Command {
 			else {
 					int x; int y;
 					try {
-						if(Integer.parseInt(tokens[1]) %2 !=0 || Integer.parseInt(tokens[2])%2 !=0)
-							throw new NumberFormatException("there are decimals in the commands");
 						x = Integer.parseInt(tokens[1]);
 						y = Integer.parseInt(tokens[2]);
 					}
 					catch(NumberFormatException exception) {
-						throw new CommandParseException("[ERROR]: " + exception.getMessage());
+						throw new CommandParseException("[ERROR]: " + "Unvalid argument for add slayer command, number expected: [a]dd <x> <y>");
 					}
 					command = new AddCommand(x, y,"add","shortCut","details","help");
+					return command;
 				}
 		}
 		return command;

@@ -59,71 +59,57 @@ public class Game implements IPrintable {
 
 	}
 
-	public void addSlayer(int x, int y) throws InvalidPositionException,NotEnoughCoinsException {
-		if ((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
-			if (this.board.isPositionEmpty(x, y)) {
-				if (this.player.puedeComprar(50)) {
-					this.player.comprar(50);
-					GameObject g = new Slayer(x, y, this, 3, "S");
-					this.board.add(g);
-					
-				} 
-				else {
-					throw new NotEnoughCoinsException(" Slayer cost is 50: Not enough coins");
-				}
-			} 
-			else {
-				throw new InvalidPositionException("Position ("+x+","+y+"): Invalid position");
-			}
-		}
+
+	public void addSlayer(int x, int y) throws InvalidPositionException, NotEnoughCoinsException {
+		
+		if (!((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0) && this.board.isPositionEmpty(x, y)))
+			throw new InvalidPositionException("Position (" + x + "," + y + "): Invalid position");
+
+		if (!this.player.puedeComprar(50))
+			throw new NotEnoughCoinsException(" Slayer cost is 50: Not enough coins");
+
+		this.player.comprar(50);
+		GameObject g = new Slayer(x, y, this, 3, "S");
+		this.board.add(g);
 
 	}
 
-	public void addBank(int x, int y, int z) throws InvalidPositionException,NotEnoughCoinsException{
-		if ((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0)) {
-			if (this.board.isPositionEmpty(x, y)) {
-				if (this.player.puedeComprar(z)) {
-					this.player.comprar(z);
-					GameObject g = new Bank(x, y, z, this, z, "B");
-					this.board.add(g);
-					
-				} else {
-					throw new NotEnoughCoinsException(" Bank cost is"+ z+": Not enough coins");
-				}
-			} else {
-				throw new InvalidPositionException("Position ("+x+","+y+"): Invalid position");
-			}
-		}
+	public void addBank(int x, int y, int z) throws InvalidPositionException, NotEnoughCoinsException {
+		
+		if (!((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0) && this.board.isPositionEmpty(x, y)))
+			throw new InvalidPositionException("Position (" + x + "," + y + "): Invalid position");
+
+		if (!this.player.puedeComprar(z))
+			throw new NotEnoughCoinsException(" Bank cost is" + z + ": Not enough coins");
+
+		this.player.comprar(z);
+		GameObject g = new Bank(x, y, z, this, z, "B");
+		this.board.add(g);
 	}
 
 	public void bank(int n) {
 		this.player.bank(n);
 	}
 
-	public void garlicPush() throws NotEnoughCoinsException{
-		if (this.player.puedeComprar(10)) {
-			this.player.comprar(10);
-			this.board.garlicPush(dim_x, dim_y);
-			
-		} else {
+	public void garlicPush() throws NotEnoughCoinsException {
+		if (!this.player.puedeComprar(10))
 			throw new NotEnoughCoinsException("Garlic Push cost is 10: Not enough coins");
-		}
-		
+
+		this.player.comprar(10);
+		this.board.garlicPush(dim_x, dim_y);
 
 	}
 
-	public void lightFlash() throws NotEnoughCoinsException{
-		if (this.player.puedeComprar(50)) {
-			this.player.comprar(50);
-			this.board.lightFlash();
-			
-		} else {
+	public void lightFlash() throws NotEnoughCoinsException {
+		if (!this.player.puedeComprar(50))
 			throw new NotEnoughCoinsException("Light flash cost is 50: Not enough coins");
-		}
-		
+
+		this.player.comprar(50);
+		this.board.lightFlash();
+
 	}
 
-	public void addVampire()  {
+	public void addVampire() {
 		if ((Vampire.VampRest() > 0) && Vampire.doesAdd(this.rand)) {
 			int x = this.dim_x - 1;
 			int y = rand.nextInt(this.dim_y);
@@ -152,29 +138,30 @@ public class Game implements IPrintable {
 		}
 	}
 
-	public void addCustomVampire(int x, int y, String type) throws NoMoreVampiresException,DraculaIsAliveException,InvalidPositionException{
-		if (this.board.isPositionEmpty(x, y) &&(x < (dim_x) && x >= 0) && (y < dim_y && y >= 0)) {
-			if ((Vampire.VampRest() > 0)) {
-				switch (type) {
-				case "v":
-					GameObject v = new Vampire(x, y, this, 5, "V");
-					this.board.add(v);
-					
-				case "d":
-					if(this.board.isDAlive())
-						throw new DraculaIsAliveException("Dracula is already on board");
-					GameObject d = new Dracula(x, y, this, 5, "D");
-					this.board.add(d);
-				case "e": 
-					GameObject ev = new ExplosiveVampire(x, y, this, 5, "EV");
-					this.board.add(ev);
-					
-				}
-			}
-			else
-				throw new NoMoreVampiresException(" No more remaining vampires left");
+	public void addCustomVampire(int x, int y, String type)	throws NoMoreVampiresException, DraculaIsAliveException, InvalidPositionException {
+		if (!(this.board.isPositionEmpty(x, y) && (x < (dim_x) && x >= 0) && (y < dim_y && y >= 0)))
+			throw new InvalidPositionException("Position (" + x + "," + y + "): Invalid position");
+
+		if (!(Vampire.VampRest() > 0))
+			throw new NoMoreVampiresException(" No more remaining vampires left");
+
+		switch (type) {
+		case "v":
+			GameObject v = new Vampire(x, y, this, 5, "V");
+			this.board.add(v);
+
+		case "d":
+			if (this.board.isDAlive())
+				throw new DraculaIsAliveException("Dracula is already on board");
+
+			GameObject d = new Dracula(x, y, this, 5, "D");
+			this.board.add(d);
+
+		case "e":
+			GameObject ev = new ExplosiveVampire(x, y, this, 5, "EV");
+			this.board.add(ev);
 		}
-		throw new InvalidPositionException("Position ("+x+","+y+"): Invalid position");
+
 	}
 
 	public void update() {

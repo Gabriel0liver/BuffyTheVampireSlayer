@@ -29,28 +29,21 @@ public class AddBloodBank extends Command {
 		}
 	}
 
-	public Command parse(String tokens[]) throws CommandParseException{
-		Command c= null;
-		if(tokens[0].equalsIgnoreCase("B") || tokens[0].equalsIgnoreCase("BANK")) {
-		if(tokens.length == 4  ){
-			int x,y,z;
+	public Command parse(String tokens[]) throws CommandParseException {
+		Command c = null;
+		if (tokens[0].equalsIgnoreCase("B") || tokens[0].equalsIgnoreCase("BANK")) {
+			if (tokens.length != 4)
+				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
+			int x, y, z;
 			try {
-				if(Integer.parseInt(tokens[1]) %2 !=0 || Integer.parseInt(tokens[2])%2 !=0 || Integer.parseInt(tokens[3])%2 !=0)
-					throw new NumberFormatException("there are decimals in the commands");
-			x = Integer.parseInt(tokens[1]);
-			y = Integer.parseInt(tokens[2]);
-			z = Integer.parseInt(tokens[3]);
-			 c = new AddBloodBank(x,y,z,"bank","b","details","help");
+				x = Integer.parseInt(tokens[1]);
+				y = Integer.parseInt(tokens[2]);
+				z = Integer.parseInt(tokens[3]);
+				c = new AddBloodBank(x, y, z, "bank", "b", "details", "help");
+			} catch (NumberFormatException exception) {
+				throw new CommandParseException("[ERROR]: " + "Unvalid argument for blood bank command, numbers expected: [b]ank <x> <y> <z>");
 			}
-			catch(NumberFormatException exception) {
-				throw new CommandParseException("[ERROR]: " + exception.getMessage());
-			}
-			
-			
-		}
-		else {
-			throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
-		}
+
 		}
 		return c;
 	}

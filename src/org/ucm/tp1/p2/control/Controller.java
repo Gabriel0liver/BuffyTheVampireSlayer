@@ -40,15 +40,11 @@ public class Controller {
 
     		try {
     			Command command = CommandGenerator.parse(words);
-    			if(command != null) {
-    				refreshDisplay = command.execute(game);
-    			}else {
-    				System.out.println("[ERROR]: "+ unknownCommandMsg);
-    			}
-    			 
+    			 refreshDisplay = command.execute(game);
     		}
     		catch(GameException ex) {
-    			System.out.format(ex.getMessage() +  "%n%n");
+    			System.out.format(ex.getMessage()+ "%n%n");
+    			
     			}
     	}
     	System.out.println("Game Over");

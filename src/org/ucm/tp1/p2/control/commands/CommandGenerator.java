@@ -17,20 +17,25 @@ public class CommandGenerator {
 	};
 	
 	public static Command parse(String[] tokens) throws CommandParseException{
-		try {
+		
 		Command cm = null;
 		for(Command c:availableCommands) {
 			cm = c.parse(tokens);
 			if (cm!=null) break;
 		}
-		if(cm == null) 
+		if(cm == null) {
 			throw new CommandParseException("[ERROR]: " + "Uknown Command");
+			
+			}
+		
 		return cm;
 		}
-		finally {
-			
-		}
 		
 		
-	}
+	
+
+
+	
+	
 }
+

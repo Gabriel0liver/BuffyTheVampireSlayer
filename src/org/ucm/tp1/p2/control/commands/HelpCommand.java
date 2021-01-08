@@ -1,6 +1,7 @@
 package org.ucm.tp1.p2.control.commands;
 
 import org.ucm.tp1.p2.logic.Game;
+import org.ucm.tp1.p3.exception.CommandParseException;
 
 public class HelpCommand extends Command {
 	
@@ -25,8 +26,11 @@ public class HelpCommand extends Command {
 		return false;
 	}
 	
-	public Command parse(String tokens[]) {
-		if(tokens.length == 1 && (tokens[0].equalsIgnoreCase("H") || tokens[0].equalsIgnoreCase("HELP"))){
+	public Command parse(String tokens[])throws CommandParseException {
+		if(  (tokens[0].equalsIgnoreCase("H") || tokens[0].equalsIgnoreCase("HELP"))){
+			if (tokens.length != 1)
+				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
+			
 			Command c = new HelpCommand("help","h","Available commands",helpMsg);
 			return c;
 			

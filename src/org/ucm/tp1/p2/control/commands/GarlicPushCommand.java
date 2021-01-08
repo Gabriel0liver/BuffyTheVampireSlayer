@@ -25,12 +25,12 @@ public class GarlicPushCommand extends Command {
 	public Command parse(String tokens[]) throws CommandParseException {
 		Command c = null;
 		if (tokens[0].equalsIgnoreCase("G") || tokens[0].equalsIgnoreCase("GARLIC")) {
-			if (tokens.length == 1) {
-				c = new GarlicPushCommand("garlic", "g", "details", "help");
-
-			} else {
+			if (tokens.length != 1)
 				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
-			}
+				
+			c = new GarlicPushCommand("garlic", "g", "details", "help");
+
+			
 		}
 		return c;
 	}
