@@ -76,7 +76,6 @@ public class Game implements IPrintable {
 				throw new InvalidPositionException("Position ("+x+","+y+"): Invalid position");
 			}
 		}
-		throw new InvalidPositionException("Position ("+x+","+y+"): Invalid position");
 
 	}
 
@@ -95,7 +94,6 @@ public class Game implements IPrintable {
 				throw new InvalidPositionException("Position ("+x+","+y+"): Invalid position");
 			}
 		}
-		throw new InvalidPositionException("Position ("+x+","+y+"): Invalid position");
 	}
 
 	public void bank(int n) {
@@ -163,14 +161,10 @@ public class Game implements IPrintable {
 					this.board.add(v);
 					
 				case "d":
-					if (!this.board.isDAlive()) {
-						GameObject d = new Dracula(x, y, this, 5, "D");
-						this.board.add(d);
-						
-					} 
-					else {
+					if(this.board.isDAlive())
 						throw new DraculaIsAliveException("Dracula is already on board");
-					}
+					GameObject d = new Dracula(x, y, this, 5, "D");
+					this.board.add(d);
 				case "e": 
 					GameObject ev = new ExplosiveVampire(x, y, this, 5, "EV");
 					this.board.add(ev);
