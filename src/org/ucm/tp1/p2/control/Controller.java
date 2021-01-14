@@ -5,7 +5,6 @@ import java.util.Scanner;
 import org.ucm.tp1.p2.control.commands.Command;
 import org.ucm.tp1.p2.control.commands.CommandGenerator;
 import org.ucm.tp1.p2.logic.Game;
-import org.ucm.tp1.p2.logic.Level;
 import org.ucm.tp1.p3.exception.GameException;
 
 public class Controller {
@@ -41,7 +40,6 @@ public class Controller {
     		try {
     			Command command = CommandGenerator.parse(words);
     			 refreshDisplay = command.execute(game);
-    			
     		}
     		catch(GameException ex) {
     			System.out.format(ex.getMessage()+ "%n%n");

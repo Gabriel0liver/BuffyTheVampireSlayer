@@ -1,5 +1,7 @@
 package org.ucm.tp1.p2.logic;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Random;
 
 import org.ucm.tp1.p2.GameObjects.Player;
@@ -59,6 +61,7 @@ public class Game implements IPrintable {
 
 	}
 
+
 	public void addSlayer(int x, int y) throws InvalidPositionException, NotEnoughCoinsException {
 		
 		if (!((x < (dim_x - 1) && x >= 0) && (y < dim_y && y >= 0) && this.board.isPositionEmpty(x, y)))
@@ -82,9 +85,8 @@ public class Game implements IPrintable {
 			throw new NotEnoughCoinsException(" Bank cost is" + z + ": Not enough coins");
 
 		this.player.comprar(z);
-		GameObject g = new Bank(x, y, z, this, z, "B");
+		GameObject g = new Bank(x, y, 1, this, z, "B");
 		this.board.add(g);
-
 	}
 
 	public void bank(int n) {
@@ -160,7 +162,6 @@ public class Game implements IPrintable {
 		case "e":
 			GameObject ev = new ExplosiveVampire(x, y, this, 5, "EV");
 			this.board.add(ev);
-
 		}
 
 	}
@@ -220,5 +221,26 @@ public class Game implements IPrintable {
 		this.contadorCiclos = 0;
 		this.GameOver = false;
 		Dracula.resetDracula();
+	}
+	
+	public String serialize() {
+		String ans = "";
+		ans += "Cycles: " + this.contadorCiclos + System.getProperty("line.separator");
+		ans += "Coins: " + this.player.mostrarCoins() + System.getProperty("line.separator");
+		ans += "Level: " + this.level + System.getProperty("line.separator");
+		ans += "Remaining Vampires: " + Vampire.VampRest() + System.getProperty("line.separator");
+		ans += "Vampires on Board: " + Vampire.VampPres() + System.getProperty("line.separator");
+		ans += System.getProperty("line.separator");
+		ans += "GameObjectList: " + System.getProperty("line.separator");
+		ans += board.serialize();
+		return ans;
+	}
+
+	public void store(BufferedWriter outStream) throws IOException {
+		try {
+			outStream.write(this.serialize());
+		} catch (IOException e) {
+			throw new IOException();
+		}
 	}
 }

@@ -38,26 +38,20 @@ public class AddCommand extends Command {
 			
 			if (tokens.length != 3) 
 				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
-		
-			else {
-					int x; int y;
-					try {
-						x = Integer.parseInt(tokens[1]);
-						y = Integer.parseInt(tokens[2]);
-					}
-					catch(NumberFormatException exception) {
-						throw new CommandParseException("[ERROR]: " + "Unvalid argument for add slayer command, number expected: [a]dd <x> <y>");
-					}
-					command = new AddCommand(x, y,"add","shortCut","details","help");
-					return command;
-				}
+	
+			int x; int y;
+			try {
+				x = Integer.parseInt(tokens[1]);
+				y = Integer.parseInt(tokens[2]);
+			}
+			catch(NumberFormatException exception) {
+				throw new CommandParseException("[ERROR]: " + "Unvalid argument for add slayer command, number expected: [a]dd <x> <y>");
+			}
+			command = new AddCommand(x, y,"add","shortCut","details","help");
+			return command;
 		}
 		return command;
 	}
 	
 	
-	
-	
-	
-	
-	}
+}

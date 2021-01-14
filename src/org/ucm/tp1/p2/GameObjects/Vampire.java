@@ -5,9 +5,9 @@ import org.ucm.tp1.p2.logic.Level;
 
 public class Vampire extends GameObject {
 			
-		public static final int HARM=1; //dagno
-		public static  final int SPEED = 1; // avanza 1 casilla cada 2 ciclos; //hay que ponerle el final.
-		private int nextStep;
+		public static final int HARM=1;
+		public static  final int SPEED = 1;
+
 		private static Level level = null;
 		private static int vampirosPorSalir;
 		public static int vampirosEnElTablero = 0;
@@ -124,7 +124,6 @@ public class Vampire extends GameObject {
 			decreaseLife(1);
 			return true;
 		}
-		
 		
 	
 }
