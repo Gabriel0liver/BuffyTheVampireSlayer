@@ -46,7 +46,7 @@ public class AddVampireCommand extends Command {
 						c = new AddVampireCommand(x,y,"vampire",type,"details","help");
 						}
 						catch(NumberFormatException exception) {
-							throw new CommandParseException("[ERROR]: " + exception.getMessage());
+							throw new CommandParseException("[ERROR]: " + "Unvalid argument for add vampire command, number expected: [v]ampire [<type>] <x> <y>. Type = {\"\"|\"D\"|\"E\"}");
 						}
 					}
 				}
