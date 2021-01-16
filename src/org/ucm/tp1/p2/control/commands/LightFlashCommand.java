@@ -18,7 +18,7 @@ public class LightFlashCommand extends Command{
 				return true;
 		}
 		catch(NotEnoughCoinsException e) {	
-			throw new CommandExecuteException("[ERROR]: " +e.getMessage(), e);
+			throw new CommandExecuteException("[ERROR]: " +e.getMessage()+"%n"+"[ERROR]: Failed to light flash", e);
 		}
 		
 	}
@@ -28,7 +28,7 @@ public class LightFlashCommand extends Command{
 		Command c = null;
 		if (tokens[0].equalsIgnoreCase("L") || tokens[0].equalsIgnoreCase("LIGHT")) {
 			if (tokens.length != 1)
-				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
+				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments"+"%n"+"[ERROR]: Failed to light flash");
 				
 			c = new LightFlashCommand("light","l","details","help");
 		}

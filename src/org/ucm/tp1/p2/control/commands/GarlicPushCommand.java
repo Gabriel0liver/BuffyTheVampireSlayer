@@ -17,7 +17,7 @@ public class GarlicPushCommand extends Command {
 			game.update();
 			return true;
 		} catch (NotEnoughCoinsException e) {
-			throw new CommandExecuteException("[ERROR]: " + e.getMessage(), e);
+			throw new CommandExecuteException("[ERROR]: " + e.getMessage()+"%n"+"[ERROR]: Failed to garlic push", e);
 		}
 
 	}
@@ -26,7 +26,7 @@ public class GarlicPushCommand extends Command {
 		Command c = null;
 		if (tokens[0].equalsIgnoreCase("G") || tokens[0].equalsIgnoreCase("GARLIC")) {
 			if (tokens.length != 1)
-				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
+				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments"+"%n"+"[ERROR]: Failed to garlic push");
 				
 			c = new GarlicPushCommand("garlic", "g", "details", "help");
 

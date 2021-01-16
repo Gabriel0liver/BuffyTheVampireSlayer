@@ -22,13 +22,13 @@ public class AddVampireCommand extends Command {
 			return true;
 		}
 		catch(InvalidPositionException e) {
-			throw new CommandExecuteException( "[ERROR]: "+e.getMessage(), e);
+			throw new CommandExecuteException( "[ERROR]: "+e.getMessage()+"%n"+"[ERROR]: Failed to add vampire", e);
 		}
 		catch(NoMoreVampiresException e) {
-			throw new CommandExecuteException( "[ERROR]: "+e.getMessage(), e);
+			throw new CommandExecuteException( "[ERROR]: "+e.getMessage()+"%n"+"[ERROR]: Failed to add vampire", e);
 		}
 		catch(DraculaIsAliveException e) {
-			throw new CommandExecuteException( "[ERROR]: "+e.getMessage(), e);
+			throw new CommandExecuteException( "[ERROR]: "+e.getMessage()+"%n"+"[ERROR]: Failed to add vampire", e);
 		}
 	}
 
@@ -46,30 +46,29 @@ public class AddVampireCommand extends Command {
 						c = new AddVampireCommand(x,y,"vampire",type,"details","help");
 						}
 						catch(NumberFormatException exception) {
-							throw new CommandParseException("[ERROR]: " + "Unvalid argument for add vampire command, number expected: [v]ampire [<type>] <x> <y>. Type = {\"\"|\"D\"|\"E\"}");
+							throw new CommandParseException("[ERROR]: " + "Unvalid argument for add vampire command, number expected: [v]ampire [<type>] <x> <y>. Type = {\"\"|\"D\"|\"E\"}"+"%n"+"[ERROR]: Failed to add vampire");
 						}
 					}
 				}
 				if(c==null)
-					throw new CommandParseException("[ERROR]: Unvalid type: [v]ampire [<type>] <x> <y>. Type = {\"\"|\"D\"|\"E\"}");
+					throw new CommandParseException("[ERROR]: Unvalid type: [v]ampire [<type>] <x> <y>. Type = {\"\"|\"D\"|\"E\"}"+"%n"+"[ERROR]: Failed to add vampire");
 				
 			}
 			
 			else if( tokens.length==3) {
 				int x,y;
 				try {
-					if(Integer.parseInt(tokens[1]) %2 !=0 || Integer.parseInt(tokens[2])%2 !=0)
-						throw new NumberFormatException("there are decimals in the commands");
+					
 					x = Integer.parseInt(tokens[1]);
 					y = Integer.parseInt(tokens[2]);
 				}
 				catch(NumberFormatException exception) {
-					throw new CommandParseException("[ERROR]: " + "You can't put decimals");
+					throw new CommandParseException("[ERROR]: " + "You can't put decimals"+"%n"+"[ERROR]: Failed to add vampire");
 				}
 				c = new AddVampireCommand(x,y,"vampire","v","details","help");
 			}
 			else {
-				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
+				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments"+"%n"+"[ERROR]: Failed to add vampire");
 			}
 			
 		}

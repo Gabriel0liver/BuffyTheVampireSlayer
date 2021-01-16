@@ -21,11 +21,11 @@ public class AddCommand extends Command {
 		}
 		catch(NotEnoughCoinsException e) {
 			
-			throw new CommandExecuteException("[ERROR]: " +e.getMessage(), e);
+			throw new CommandExecuteException("[ERROR]: " +e.getMessage()+"%n"+"[ERROR]: Failed to add slayer", e);
 		}
 		catch(InvalidPositionException e) {
 			
-			throw new CommandExecuteException( "[ERROR]: "+e.getMessage(), e);
+			throw new CommandExecuteException( "[ERROR]: "+e.getMessage()+"%n"+"[ERROR]: Failed to add slayer", e);
 		}
 		
 		
@@ -37,7 +37,7 @@ public class AddCommand extends Command {
 		if (tokens[0].equalsIgnoreCase("ADD") || tokens[0].equalsIgnoreCase("A")) {
 			
 			if (tokens.length != 3) 
-				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments");
+				throw new CommandParseException("[ERROR]: " + "Incorrect number of arguments"+"%n"+"[ERROR]: Failed to add slayer");
 	
 			int x; int y;
 			try {
@@ -45,7 +45,7 @@ public class AddCommand extends Command {
 				y = Integer.parseInt(tokens[2]);
 			}
 			catch(NumberFormatException exception) {
-				throw new CommandParseException("[ERROR]: " + "Unvalid argument for add slayer command, number expected: [a]dd <x> <y>");
+				throw new CommandParseException("[ERROR]: " + "Unvalid argument for add slayer command, number expected: [a]dd <x> <y>"+"%n"+"[ERROR]: Failed to add slayer");
 			}
 			command = new AddCommand(x, y,"add","shortCut","details","help");
 			return command;

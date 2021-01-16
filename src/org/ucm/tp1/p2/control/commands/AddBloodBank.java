@@ -21,11 +21,11 @@ public class AddBloodBank extends Command {
 			g.update();
 			return true;
 		} catch (NotEnoughCoinsException e) {
-			throw new CommandExecuteException("[ERROR]: " + e.getMessage(), e);
+			throw new CommandExecuteException("[ERROR]: " + e.getMessage()+"%n"+"[ERROR]: Failed to add bank", e);
 		}
 
 		catch (InvalidPositionException e) {
-			throw new CommandExecuteException("[ERROR]: " + e.getMessage(), e);
+			throw new CommandExecuteException("[ERROR]: " + e.getMessage()+"%n"+"[ERROR]: Failed to add bank", e);
 		}
 	}
 
@@ -41,7 +41,7 @@ public class AddBloodBank extends Command {
 				z = Integer.parseInt(tokens[3]);
 				c = new AddBloodBank(x, y, z, "bank", "b", "details", "help");
 			} catch (NumberFormatException exception) {
-				throw new CommandParseException("[ERROR]: " + "Unvalid argument for blood bank command, numbers expected: [b]ank <x> <y> <z>");
+				throw new CommandParseException("[ERROR]: " + "Unvalid argument for blood bank command, numbers expected: [b]ank <x> <y> <z>"+"%n"+"[ERROR]: Failed to add bank");
 			}
 
 		}
